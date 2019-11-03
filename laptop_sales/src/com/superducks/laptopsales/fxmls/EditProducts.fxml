@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" prefHeight="400.0" prefWidth="757.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.EditProducts">
+   <children>
+      <Label layoutX="36.0" layoutY="64.0" text="CategoryName" />
+      <TextField fx:id="txtNameProduct" layoutX="488.0" layoutY="60.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="247.0" />
+      <Label layoutX="36.0" layoutY="99.0" text="NSX" />
+      <Label layoutX="30.0" layoutY="170.0" text="Infomation" />
+      <ImageView fx:id="imgProduct" fitHeight="249.0" fitWidth="247.0" layoutX="488.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="txtPrice" layoutX="488.0" layoutY="92.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="247.0" />
+      <TextArea fx:id="txtInfo" layoutX="135.0" layoutY="132.0" onKeyReleased="#Changed" prefHeight="147.0" prefWidth="247.0" />
+      <TextField fx:id="txtNSX" layoutX="135.0" layoutY="95.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="247.0" />
+      <TextField fx:id="txtCategoryName" editable="false" layoutX="219.0" layoutY="60.0" prefHeight="25.0" prefWidth="163.0" />
+      <Button fx:id="btnImage" layoutX="407.0" layoutY="145.0" mnemonicParsing="false" onAction="#addImage" text="Image" />
+      <Label layoutX="391.0" layoutY="64.0" text="Name" />
+      <Label layoutX="394.0" layoutY="98.0" text="Price" />
+   </children>
+</AnchorPane>

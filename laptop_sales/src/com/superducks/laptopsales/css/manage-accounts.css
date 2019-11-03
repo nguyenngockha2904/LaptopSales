@@ -1,0 +1,5 @@
+.body {
+    -fx-background-image: url("../images/clean-background.jpg");
+    -fx-background-size: cover;
+}
+

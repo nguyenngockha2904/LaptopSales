@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="586.0" prefWidth="986.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.ManageAccounts">
+   <children>
+      <TableView fx:id="tblAccounts" layoutX="50.0" layoutY="47.0" prefHeight="492.0" prefWidth="805.0" styleClass="table" stylesheets="@../css/table.css">
+        <columns>
+            <TableColumn fx:id="clmID" prefWidth="77.0" style="-fx-alignment: CENTER;" text="ID" />
+          <TableColumn fx:id="clmUsername" prefWidth="228.0" style="-fx-alignment: CENTER;" text="Username" />
+          <TableColumn fx:id="clmFullname" prefWidth="335.0" style="-fx-alignment: CENTER;" text="Fullname" />
+            <TableColumn fx:id="clmPosition" prefWidth="162.0" style="-fx-alignment: CENTER;" text="Position" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="btnAdd" fitHeight="60.0" fitWidth="60.0" layoutX="885.0" layoutY="77.0" onMouseClicked="#btnAdd_Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/add-person.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnEdit" fitHeight="60.0" fitWidth="60.0" layoutX="885.0" layoutY="155.0" onMouseClicked="#btnEdit_Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnDelete" fitHeight="60.0" fitWidth="60.0" layoutX="885.0" layoutY="233.0" onMouseClicked="#btnDelete_Clicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/trash.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnClose" fitHeight="60.0" fitWidth="60.0" layoutX="885.0" layoutY="312.0" onMouseClicked="#btnClose_Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/delete.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

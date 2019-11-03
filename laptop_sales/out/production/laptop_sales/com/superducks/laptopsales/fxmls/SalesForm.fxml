@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="401.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.SalesForm">
+   <children>
+      <VBox fillWidth="false" layoutX="28.0" layoutY="72.0" prefHeight="104.0" prefWidth="690.0" spacing="10.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="586.0" spacing="10.0">
+               <children>
+                  <Label text="Số Hóa Đơn " />
+                  <TextField fx:id="txtMsHD">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="Ngày Bán " />
+                  <DatePicker>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="586.0" spacing="10.0">
+               <children>
+                  <Label text="Mã Số Khách Hàng" />
+                  <ComboBox fx:id="cbKhachHang" prefHeight="25.0" prefWidth="61.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Label alignment="CENTER" text="Tên Khách Hàng" />
+                  <TextField fx:id="txtTenKhachHang" alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="231.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox spacing="10.0">
+               <children>
+                  <Label text="Địa Chỉ" />
+                  <TextField fx:id="txtDiaChi" alignment="CENTER" editable="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text="Điện Thoại" />
+                  <TextField fx:id="txtDienThoai" alignment="CENTER" editable="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fillWidth="false" layoutX="17.0" layoutY="190.0" spacing="10.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="50.0" text="STT" textOverrun="CLIP" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="100.0" text="MS Mặt Hàng" textOverrun="CLIP" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="200.0" text="Tên Mặt Hàng" textOverrun="CLIP" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="80.0" text="Đơn vị tính" textOverrun="CLIP" />
+                  <Label alignment="CENTER" lineSpacing="10.0" prefHeight="17.0" prefWidth="100.0" text="Số lượng" textOverrun="CLIP" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="100.0" text="Đơn giá" textOverrun="CLIP" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="100.0" text="Trị giá" textOverrun="CLIP" />
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollPane" prefHeight="57.0" prefWidth="712.0">
+               <content>
+                  <GridPane fx:id="gridPane" prefHeight="90.0" prefWidth="709.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" text="Tổng giá trị" />
+                  <TextField fx:id="txtTongGiaTri" alignment="CENTER_RIGHT" editable="false" text="0">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutX="14.0" layoutY="352.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnNew" minWidth="70.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Tạo Mới" />
+            <Button fx:id="btnAddCT" minWidth="70.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Thêm Chi Tiết" />
+            <Button fx:id="btnSave" minWidth="70.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Lưu" />
+            <Button fx:id="btnClose" minWidth="70.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Đóng">
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="4.0" layoutY="4.0" prefHeight="57.0" prefWidth="747.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Sales" textAlignment="JUSTIFY">
+               <font>
+                  <Font name="Times New Roman" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

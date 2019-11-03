@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="415.0" prefWidth="486.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.EditAccounts">
+    <children>
+        <Label layoutX="29.0" layoutY="33.0" text="Username" />
+        <TextField fx:id="txtUsername" disable="true" editable="false" layoutX="151.0" layoutY="29.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="81.0" text="Email" />
+        <TextField fx:id="txtEmail" layoutX="152.0" layoutY="77.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="127.0" text="Fullname" />
+        <TextField fx:id="txtFullname" layoutX="151.0" layoutY="123.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="173.0" text="Password" />
+        <PasswordField fx:id="txtPassword" disable="true" layoutX="152.0" layoutY="169.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="221.0" text="Birthday" />
+        <DatePicker fx:id="dtpBirthday" editable="false" layoutX="152.0" layoutY="217.0" onAction="#textChanged_Second" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="265.0" text="Position" />
+        <ComboBox fx:id="cbxPosition" disable="true" layoutX="152.0" layoutY="261.0" onAction="#textChanged_Second" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="314.0" text="Address" />
+        <TextField fx:id="txtAddress" layoutX="152.0" layoutY="310.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="29.0" layoutY="363.0" text="Phone" />
+        <TextField fx:id="txtPhone" layoutX="152.0" layoutY="359.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+
+        <ImageView fx:id="btnNonEdit" fitHeight="40.0" fitWidth="40.0" layoutX="418.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/web_ui_brown/checkmark.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnEdit" fitHeight="40.0" fitWidth="40.0" layoutX="418.0" layoutY="22.0" onMouseClicked="#btnEdit_Click" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/web_ui_color/checkmark.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnClose" fitHeight="40.0" fitWidth="40.0" layoutX="418.0" layoutY="70.0" onMouseClicked="#btnClose_Click" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/web_ui_color/delete.png" />
+            </image>
+        </ImageView>
+
+
+    </children>
+</AnchorPane>
