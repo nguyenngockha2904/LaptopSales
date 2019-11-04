@@ -7,19 +7,18 @@ public class Products {
     private String producer;
     private String info;
     private String img;
-    private Float price;
+    private int price;
 
-    public Products(int productId, String categoryId, String name, Float price) {
+    public Products(int productId, String categoryId, String name, int price) {
         this.productId = productId;
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
     }
-
     public Products() {
     }
 
-    public Products(int productId, String categoryId, String name, String producer, String info, String img, Float price) {
+    public Products(int productId, String categoryId, String name, String producer, String info, String img, int price) {
         this.productId = productId;
         this.categoryId = categoryId;
         this.name = name;
@@ -77,11 +76,11 @@ public class Products {
         this.img = img;
     }
 
-    public Float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

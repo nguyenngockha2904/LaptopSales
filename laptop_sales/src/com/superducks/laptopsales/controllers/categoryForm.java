@@ -51,6 +51,7 @@ public class CategoryForm {
             e.printStackTrace();
         }
         categoryid.add("all");
+
         cboCategory.getItems().add("all");
         showdata();
     }
@@ -66,7 +67,7 @@ public class CategoryForm {
                 Products p= new Products(rs.getInt(1),
                        rs.getString(2),
                        rs.getString(3),
-                       rs.getFloat(7));
+                       rs.getInt(7));
                 data.add(p);
 
             }
@@ -81,8 +82,9 @@ public class CategoryForm {
             e.printStackTrace();
         }
     }
-    public void cboCategory(ActionEvent actionEvent) {
+    public void cboCategory(ActionEvent actionEvent)    {
         System.out.println(cboCategory.getSelectionModel().getSelectedItem().toString());
+
 //        System.out.println(categoryid.get(index));
         int index=cboCategory.getSelectionModel().getSelectedIndex();
         ObservableList<Products> data = FXCollections.observableArrayList();
@@ -99,7 +101,7 @@ public class CategoryForm {
                 Products p= new Products(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getFloat(7));
+                        rs.getInt(7));
                 data.add(p);
 
             }
@@ -109,6 +111,7 @@ public class CategoryForm {
             clmPrice.setCellValueFactory(new PropertyValueFactory<Products,String>("price"));
             tblProducts.getItems().clear();
             tblProducts.setItems(data);
+            tblProducts.getSelectionModel().selectFirst();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,9 +145,10 @@ public class CategoryForm {
     }
 
     public void btnEditClick(MouseEvent mouseEvent) {
+
        Products p=tblProducts.getSelectionModel().getSelectedItem();
         EditProducts.value=p.getProductId();
-        EditProducts.Name=cboCategory.getSelectionModel().getSelectedItem().toString();
+        EditProducts.Name=p.getCategoryId();
         EditProducts.showForm();
         showdata();
     }

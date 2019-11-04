@@ -1,5 +1,6 @@
 package com.superducks.laptopsales.controllers;
 
+import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
 import com.superducks.laptopsales.Class.Products;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -35,14 +37,26 @@ public class EditProducts {
     public AnchorPane ap;
     public static int value;
     public static String Name;
-    public void initialize(){showData();}
+    public Button btnUpdate;
+
+    public void initialize(){
+        String sql="Select categoryName from laptop_sales.category where categoryID='"+Name+"'";
+        try {
+            ResultSet rs=ConnectDatabase.Connect().createStatement().executeQuery(sql);
+            while (rs.next()){
+            txtCategoryName.setText(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        showData();}
 
     private void showData() {
        String sql = "SELECT * FROM laptop_sales.products where productID='"+value+"'";
        try {
            ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()){
-                txtCategoryName.setText(Name);
                 txtNameProduct.setText(rs.getString(3));
                 txtNSX.setText(rs.getString(4));
                 txtInfo.setText(rs.getString(5));
@@ -90,6 +104,21 @@ public class EditProducts {
             btnImage.setVisible(false);
         }
         System.out.println(urlimage);
+    }
+
+    public void btnUpdateClick(MouseEvent mouseEvent) {
+        if(AlertMessage.showAlertYesNo()) {
+            String sql="UPDATE laptop_sales.products SET name = '"+txtNameProduct.getText()+"', producer = '"+txtNSX.getText()+"', info = '"+txtInfo.getText()+"', img = '"+imgProduct.getImage().getUrl().toString()+"', price = '"+Integer.parseInt(txtPrice.getText())+"' WHERE (productID = '"+value+"')";
+            try {
+                int row= ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
+                System.out.println(row);
+                mainStage.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 }
 
