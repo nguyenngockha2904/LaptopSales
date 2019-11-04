@@ -25,7 +25,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class categoryForm {
+public class CategoryForm {
 
     public ComboBox cboCategory;
     public TableView<Products> tblProducts;
@@ -113,8 +113,10 @@ public class categoryForm {
             e.printStackTrace();
         }
     }
-    private static Stage mainStage = new Stage();
+    private static Stage mainStage =new Stage();
+
     static void showForm(){
+
         Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/CategoryForm.fxml")));
@@ -124,7 +126,6 @@ public class categoryForm {
             mainStage.getIcons().add(icon);
             mainStage.show();
             mainStage.setResizable(false);
-            mainStage.setOnCloseRequest(e-> Platform.exit());
         }
         catch (IOException e) {
             e.printStackTrace();

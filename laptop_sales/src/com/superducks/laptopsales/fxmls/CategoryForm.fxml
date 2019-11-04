@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ap" prefHeight="460.0" prefWidth="801.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.categoryForm">
+<AnchorPane fx:id="ap" prefHeight="460.0" prefWidth="801.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.CategoryForm">
    <children>
       <ComboBox fx:id="cboCategory" layoutX="21.0" layoutY="40.0" onAction="#cboCategory" prefHeight="25.0" prefWidth="137.0" AnchorPane.leftAnchor="21.0" />
       <Label layoutX="62.0" layoutY="14.0" text="Category :" AnchorPane.leftAnchor="62.0" />

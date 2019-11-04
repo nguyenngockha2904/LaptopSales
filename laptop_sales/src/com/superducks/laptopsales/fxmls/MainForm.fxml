@@ -97,7 +97,7 @@
                               <Image url="@../icons/main_icons/statistics.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="btnCategories" fitHeight="160.0" fitWidth="160.0" layoutX="394.0" layoutY="89.0" onMouseExited="#btnCategories_MouseExited" onMouseMoved="#btnCategories_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="btnCategories" fitHeight="160.0" fitWidth="160.0" layoutX="394.0" layoutY="89.0" onMouseClicked="#btnCategories_MouseClicked" onMouseExited="#btnCategories_MouseExited" onMouseMoved="#btnCategories_MouseMoved" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/main_icons/categories.png" />
                            </image>

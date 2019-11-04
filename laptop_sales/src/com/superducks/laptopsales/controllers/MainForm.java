@@ -172,4 +172,8 @@ public class MainForm {
         EditAccounts.mainFormClick = true;
         EditAccounts.showForm();
     }
+
+    public void btnCategories_MouseClicked(MouseEvent mouseEvent) {
+        CategoryForm.showForm();
+    }
 }

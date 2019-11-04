@@ -13,7 +13,7 @@ public class ConnectDatabase {
         //database local
         String URL = "jdbc:mysql://localhost:3306/laptop_sales?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
         String USERNAME = "root";
-        String PASSWORD = "04030211";
+        String PASSWORD = "12081989";
 
         //database online server heroku
         String URL_ONL = "jdbc:mysql://erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/r2yqjhhpfcw4qy0p?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
@@ -22,10 +22,10 @@ public class ConnectDatabase {
 
         try {
             //database local
-            //conn = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            conn = (Connection) DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             //database online server heroku
-            conn = (Connection) DriverManager.getConnection(URL_ONL, USERNAME_ONL, PASSWORD_ONL);
+          //  conn = (Connection) DriverManager.getConnection(URL_ONL, USERNAME_ONL, PASSWORD_ONL);
 
             return conn;
         } catch (Exception e) {
