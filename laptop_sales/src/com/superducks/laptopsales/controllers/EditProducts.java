@@ -35,12 +35,12 @@ public class EditProducts {
     public Button btnImage;
     public String urlimage;
     public AnchorPane ap;
-    public static int value;
-    public static String Name;
+    public static int ProductID;
+    public static String CategoryID;
     public Button btnUpdate;
 
     public void initialize(){
-        String sql="Select categoryName from laptop_sales.category where categoryID='"+Name+"'";
+        String sql="Select categoryName from laptop_sales.category where categoryID='"+CategoryID+"'";
         try {
             ResultSet rs=ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()){
@@ -53,7 +53,7 @@ public class EditProducts {
         showData();}
 
     private void showData() {
-       String sql = "SELECT * FROM laptop_sales.products where productID='"+value+"'";
+       String sql = "SELECT * FROM laptop_sales.products where productID='"+ProductID+"'";
        try {
            ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()){
@@ -75,9 +75,9 @@ public class EditProducts {
         Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditProducts.fxml")));
-            mainStage.setTitle("Main Form");
+            mainStage.setTitle("Edit Products");
             mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/laptop-icon.png");
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/compose.png");
             mainStage.getIcons().add(icon);
             mainStage.show();
             mainStage.setResizable(false);
@@ -108,7 +108,7 @@ public class EditProducts {
 
     public void btnUpdateClick(MouseEvent mouseEvent) {
         if(AlertMessage.showAlertYesNo()) {
-            String sql="UPDATE laptop_sales.products SET name = '"+txtNameProduct.getText()+"', producer = '"+txtNSX.getText()+"', info = '"+txtInfo.getText()+"', img = '"+imgProduct.getImage().getUrl().toString()+"', price = '"+Integer.parseInt(txtPrice.getText())+"' WHERE (productID = '"+value+"')";
+            String sql="UPDATE laptop_sales.products SET name = '"+txtNameProduct.getText()+"', producer = '"+txtNSX.getText()+"', info = '"+txtInfo.getText()+"', img = '"+imgProduct.getImage().getUrl().toString()+"', price = '"+Integer.parseInt(txtPrice.getText())+"' WHERE (productID = '"+ProductID+"')";
             try {
                 int row= ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
                 System.out.println(row);

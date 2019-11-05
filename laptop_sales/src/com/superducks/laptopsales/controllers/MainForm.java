@@ -174,6 +174,6 @@ public class MainForm {
     }
 
     public void btnCategories_MouseClicked(MouseEvent mouseEvent) {
-        CategoryForm.showForm();
+        ManageCategories.showForm();
     }
 }

@@ -43,6 +43,8 @@ public class AddProducts {
     public AnchorPane ap;
     ArrayList<String> data;
    public void initialize(){
+       cbocategory.setValue("chọn danh mục");
+       txtCategoryName.setText("tên danh mục");
        data = new ArrayList<String>();
        String sql="SELECT * FROM `category`";
        Connection conn=ConnectDatabase.Connect();
@@ -91,9 +93,9 @@ public class AddProducts {
         Parent root;
         try {
             root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/AddProducts.fxml")));
-            mainStage.setTitle("Main Form");
+            mainStage.setTitle("Add Products");
             mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/laptop-icon.png");
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/plus.png");
             mainStage.getIcons().add(icon);
             mainStage.show();
             mainStage.setResizable(false);
@@ -125,7 +127,7 @@ public class AddProducts {
     }
 
     public void Changed(KeyEvent keyEvent) {
-        if(txtNameProduct.getText()!=null||txtInfo.getText()!=null||txtPrice.getText()!=null||txtNSX.getText()!=null){
+        if(!txtNameProduct.getText().equals("") && !txtInfo.getText().equals("") && !txtPrice.getText().equals("") && !txtNSX.getText().equals("")){
             btnAdd.setVisible(true);
             btnNonAdd.setVisible(false);
         }

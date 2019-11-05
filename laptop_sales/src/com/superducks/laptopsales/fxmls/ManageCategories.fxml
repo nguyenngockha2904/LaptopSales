@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" prefHeight="525.0" prefWidth="875.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.ManageCategories">
+    <children>
+        <ComboBox fx:id="cboCategory" layoutX="21.0" layoutY="40.0" onAction="#cboCategory" prefHeight="25.0" prefWidth="137.0" AnchorPane.leftAnchor="21.0" />
+        <Label layoutX="62.0" layoutY="14.0" text="Category :" AnchorPane.leftAnchor="62.0" />
+        <TableView fx:id="tblProducts" layoutX="166.0" layoutY="9.0" onMouseClicked="#mouseclick" prefHeight="503.0" prefWidth="642.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="10.0">
+            <columns>
+                <TableColumn fx:id="clmID" prefWidth="89.0" text="ProductID" />
+                <TableColumn fx:id="clmCategoryID" prefWidth="110.0" text="CategoryID" />
+                <TableColumn fx:id="clmName" minWidth="0.0" prefWidth="332.0" text="Name" />
+                <TableColumn fx:id="clmPrice" prefWidth="110.0" text="Price" />
+            </columns>
+        </TableView>
+        <ImageView fx:id="btnAdd" fitHeight="30.0" fitWidth="30.0" layoutX="827.0" layoutY="31.0" onMouseClicked="#btnAddclick" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/web_ui_color/plus.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnDelete" fitHeight="95.0" fitWidth="30.0" layoutX="827.0" layoutY="125.0" onMouseClicked="#btnDeleteClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="18.0">
+            <image>
+                <Image url="@../icons/close.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnEdit" fitHeight="30.0" fitWidth="30.0" layoutX="827.0" layoutY="78.0" onMouseClicked="#btnEditClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="18.0">
+            <image>
+                <Image url="@../icons/edit.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
