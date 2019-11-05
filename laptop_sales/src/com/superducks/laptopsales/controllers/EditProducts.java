@@ -36,13 +36,16 @@ public class EditProducts {
     public AnchorPane ap;
     public static int ProductID;
     public static String CategoryID;
+    public static int chage;
     public ImageView btnUpdate;
     public ImageView btnClose;
     private static Stage mainStage = new Stage();
     public ImageView btnNonUpdate;
+    public Button btnairt;
     String nameProduct, nsx, info, price;
 
     public void initialize() {
+        if (chage==1){btnairt.setVisible(true);}
         String sql = "Select categoryName from laptop_sales.category where categoryID='" + CategoryID + "'";
         try {
             ResultSet rs = ConnectDatabase.Connect().createStatement().executeQuery(sql);
@@ -63,7 +66,6 @@ public class EditProducts {
             btnNonUpdate.setVisible(false);
         }
     }
-
     private void showData() {
        String sql = "SELECT * FROM laptop_sales.products where productID='"+ProductID+"'";
        try {
@@ -97,9 +99,8 @@ public class EditProducts {
             mainStage.setScene(new Scene(root));
             Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/compose.png");
             mainStage.getIcons().add(icon);
-            mainStage.show();
+            mainStage.showAndWait();
             mainStage.setResizable(false);
-            mainStage.setOnCloseRequest(e->rsFormMC());
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -163,6 +164,15 @@ public class EditProducts {
             btnUpdate.setVisible(false);
             btnNonUpdate.setVisible(true);
         }
+    }
+    int i=0;
+    public void btnaritClick(MouseEvent mouseEvent) {
+        if(AlertMessage.showAlertYesNo()){
+            FormSales.cout=i;
+            i++;
+            mainStage.close();
+        }
+
     }
 }
 

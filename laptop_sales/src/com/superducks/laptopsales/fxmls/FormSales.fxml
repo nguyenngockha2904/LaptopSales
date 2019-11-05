@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,10 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane fx:id="Stagepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="757.0" style="-fx-background-image: com.superducks.laptopsales.images.clean-background.jpg;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.FormSales">
+<AnchorPane fx:id="Stagepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="757.0" style="-fx-background-image: com.superducks.laptopsales.images.clean-background.jpg;" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.FormSales">
    <children>
-      <FlowPane fx:id="fpn" layoutX="16.0" layoutY="43.0" prefHeight="597.0" prefWidth="726.0" />
-      <MenuBar layoutY="2.0">
+      <FlowPane fx:id="fpn" layoutX="16.0" layoutY="57.0" prefHeight="583.0" prefWidth="726.0" stylesheets="@../css/manage-accounts.css" />
+      <MenuBar layoutY="2.0" styleClass="body" stylesheets="@../css/manage-accounts.css">
         <menus>
           <Menu mnemonicParsing="false" text="Danh mục sản phẩm">
             <items>
@@ -26,10 +27,11 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="712.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="45.0" layoutX="692.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/cart.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblcount" layoutX="715.0" layoutY="6.0" text="1" textFill="#dd0a0a" />
    </children>
 </AnchorPane>

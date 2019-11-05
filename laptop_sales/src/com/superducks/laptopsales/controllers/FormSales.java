@@ -31,15 +31,15 @@ public class FormSales {
     public AnchorPane Stagepane;
     public FlowPane fpn;
     public Label label;
-    ArrayList<Integer> ProductIDlist;
-    ArrayList<String> CategoryIDlist;
+    public Label lblcount;
+    public static int cout;
     public void initialize() {
+
         ShowData();
     }
 
     private void ShowData() {
-        ProductIDlist=new ArrayList<>();
-        CategoryIDlist=new ArrayList<>();
+
         String sql="select * from laptop_sales.products";
         ObservableList<ImageView> listIMG= FXCollections.observableArrayList();
         try {
@@ -48,7 +48,6 @@ public class FormSales {
                 String pid=rs.getString(1),cid=rs.getString(2);
                 Image img=new Image(rs.getString(6));
                 ImageView imageView=new ImageView(img);
-                imageView.setId(rs.getString(1));
                 imageView.setFitWidth(100);
                 imageView.setFitHeight(100);
                 imageView.setOnMouseClicked(e-> {
@@ -83,30 +82,58 @@ public class FormSales {
     public void event(String pid,String cid){
         EditProducts.CategoryID=cid;
         EditProducts.ProductID=Integer.parseInt(pid);
+        EditProducts.chage=1;
         EditProducts.showForm();
     }
+    public void seach(String categoryID){
+        String sql="SELECT * FROM laptop_sales.products where categoryID='"+categoryID+"'";
+        ObservableList<ImageView> listIMG= FXCollections.observableArrayList();
+        try {
+            ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
+            while (rs.next()){
+                String pid=rs.getString(1),cid=rs.getString(2);
+                Image img=new Image(rs.getString(6));
+                ImageView imageView=new ImageView(img);
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(100);
+                imageView.setOnMouseClicked(e-> {
+                    event(pid,cid);
 
+                });
+                listIMG.add(imageView);
+            }
+            fpn.getChildren().clear();
+            fpn.getChildren().addAll(listIMG);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void itmLkPCshow(ActionEvent actionEvent) {
+        seach("lkpc");
     }
 
     public void itmLaptopShow(ActionEvent actionEvent) {
+        seach("laptop");
     }
 
     public void itmManHinhShow(ActionEvent actionEvent) {
+        seach("mh");
     }
 
     public void itmBanPhimShow(ActionEvent actionEvent) {
+        seach("bp");
     }
 
     public void itmchuotShow(ActionEvent actionEvent) {
+        seach("ch");
     }
 
     public void itmTaiNgheShow(ActionEvent actionEvent) {
+        seach("tn");
     }
 
     public void itmLoaShow(ActionEvent actionEvent) {
-    }
-
-    public void btnAddOnAction(ActionEvent actionEvent) {
+        seach("loa");
     }
 }

@@ -99,7 +99,7 @@ public class AddProducts {
             mainStage.setScene(new Scene(root));
             Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/plus.png");
             mainStage.getIcons().add(icon);
-            mainStage.show();
+            mainStage.showAndWait();
             mainStage.setResizable(false);
             mainStage.setOnCloseRequest(e->rsFormMC());
 

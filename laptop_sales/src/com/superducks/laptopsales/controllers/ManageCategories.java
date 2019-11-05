@@ -1,6 +1,7 @@
 package com.superducks.laptopsales.controllers;
 
 import com.superducks.laptopsales.Class.AlertMessage;
+import com.superducks.laptopsales.Class.Category;
 import com.superducks.laptopsales.Class.ConnectDatabase;
 import com.superducks.laptopsales.Class.Products;
 import javafx.collections.FXCollections;
@@ -38,26 +39,41 @@ public class ManageCategories {
     public ImageView btnEdit;
     public ImageView btnDelete;
     static ArrayList<String> categoryid;
+    public TableColumn clmCateID;
+    public TableColumn clmCategoryName;
+    public TableView<Category> tblCategory;
+    public ImageView btnCatedelete;
+    public ImageView btnCateEdit;
+    public ImageView btnAddCategory;
+
+    public ManageCategories() {
+    }
 
     public void initialize() {
-        cboCategory.setValue("All");
+        showdataTableProduct();
+        showDatatableCategory();
+    }
+
+    public  void showDatatableCategory() {
         String sql="select *from `category`";
-        categoryid=new ArrayList<>();
+        ObservableList<Category> data = FXCollections.observableArrayList();
         try {
-            ResultSet s = ConnectDatabase.Connect().createStatement().executeQuery(sql);
-            while (s.next()) {
-                categoryid.add(s.getString(1));
-                cboCategory.getItems().add(s.getString(2));
+            ResultSet rs = ConnectDatabase.Connect().createStatement().executeQuery(sql);
+            while (rs.next()){
+                Category c=new Category(rs.getString(1),rs.getString(2));
+                data.add(c);
             }
+            clmCateID.setCellValueFactory(new PropertyValueFactory<Category,String>("CategoryID"));
+            clmCategoryName.setCellValueFactory(new PropertyValueFactory<Category,String>("CategoryName"));
+            tblCategory.getItems().clear();
+            tblCategory.setItems(data);
+            tblCategory.getSelectionModel().selectFirst();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        categoryid.add("All");
-        cboCategory.getItems().add("All");
-        showdata();
     }
 
-    public void showdata(){
+    public void showdataTableProduct(){
         ObservableList<Products> data = FXCollections.observableArrayList();
         String query="SELECT * FROM `products`";
         try {
@@ -83,19 +99,75 @@ public class ManageCategories {
             e.printStackTrace();
         }
     }
-    public void cboCategory(ActionEvent actionEvent)    {
-        System.out.println(cboCategory.getSelectionModel().getSelectedItem().toString());
-
-//        System.out.println(categoryid.get(index));
-        int index=cboCategory.getSelectionModel().getSelectedIndex();
-        ObservableList<Products> data = FXCollections.observableArrayList();
-        String sql="";
-        if(categoryid.get(index).equals("All"))
-        {
-            sql="SELECT * FROM laptop_sales.products";
-        } else {
-            sql = "SELECT * FROM laptop_sales.products where categoryID='" + categoryid.get(index) + "'";
+    public static Stage mainStage=new Stage();
+    static void showForm(){
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/ManageCategories.fxml")));
+            mainStage.setTitle("Manage Categories");
+            mainStage.setScene(new Scene(root));
+            Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/categories.png");
+            mainStage.getIcons().add(icon);
+            mainStage.showAndWait();
+            mainStage.setResizable(false);
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void btnAddclick(MouseEvent mouseEvent) {
+        AddProducts.showForm();
+        tblProducts.getItems().clear();
+        showdataTableProduct();
+    }
+    static void resetForm() {
+        mainStage.close();
+        mainStage.show();
+    }
+
+    public void btnEditClick(MouseEvent mouseEvent) {
+
+        Products p=tblProducts.getSelectionModel().getSelectedItem();
+        EditProducts.ProductID=p.getProductId();
+        EditProducts.CategoryID=p.getCategoryId();
+        EditProducts.chage=0;
+        EditProducts.showForm();
+        tblProducts.getItems().clear();
+        showdataTableProduct();
+    }
+    public void mouseclick(MouseEvent mouseEvent) {
+        btnEdit.setVisible(true);
+        btnDelete.setVisible(true);
+    }
+
+    public void btnDeleteClick(MouseEvent mouseEvent) {
+        Products p=tblProducts.getSelectionModel().getSelectedItem();
+        if(AlertMessage.showAlertYesNo()){
+            String sql="DELETE FROM products WHERE productID ="+p.getProductId();
+            try {
+                ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
+                showdataTableProduct();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            System.out.println("no");
+        }
+    }
+
+    public void btnAddCategory(MouseEvent mouseEvent) {
+        EditCategory.showForm();
+        tblCategory.getItems().clear();
+        showDatatableCategory();
+    }
+
+    public void tblCategoryClicked(MouseEvent mouseEvent) {
+        btnCateEdit.setVisible(true);
+        btnCatedelete.setVisible(true);
+        Category c=tblCategory.getSelectionModel().getSelectedItem();
+        String sql = "SELECT * FROM laptop_sales.products where categoryID='" + c.getCategoryID() + "'";
+        ObservableList<Products> data = FXCollections.observableArrayList();
         try {
             ResultSet rs=ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while(rs.next()) {
@@ -118,56 +190,30 @@ public class ManageCategories {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    private static Stage mainStage =new Stage();
-    static void showForm(){
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/ManageCategories.fxml")));
-            mainStage.setTitle("Manage Categories");
-            mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/categories.png");
-            mainStage.getIcons().add(icon);
-            mainStage.show();
-            mainStage.setResizable(false);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void btnAddclick(MouseEvent mouseEvent) {
-        AddProducts.showForm();
-    }
-    static void resetForm() {
-        mainStage.close();
-        showForm();
+
+
     }
 
-    public void btnEditClick(MouseEvent mouseEvent) {
-
-        Products p=tblProducts.getSelectionModel().getSelectedItem();
-        EditProducts.ProductID=p.getProductId();
-        EditProducts.CategoryID=p.getCategoryId();
-        EditProducts.showForm();
-    }
-    public void mouseclick(MouseEvent mouseEvent) {
-        btnEdit.setVisible(true);
-        btnDelete.setVisible(true);
+    public void btnCateEditClick(MouseEvent mouseEvent) {
+        Category c=tblCategory.getSelectionModel().getSelectedItem();
+        EditCategory.categoryID=c.getCategoryID();
+        EditCategory.categoryName=c.getCategoryName();
+        EditCategory.chage=1;
+        EditCategory.showForm();
+        tblCategory.getItems().clear();
+        showDatatableCategory();
     }
 
-    public void btnDeleteClick(MouseEvent mouseEvent) {
-        Products p=tblProducts.getSelectionModel().getSelectedItem();
-        if(AlertMessage.showAlertYesNo()){
-            String sql="DELETE FROM products WHERE productID ="+p.getProductId();
+    public void btnCateDeleteClick(MouseEvent mouseEvent) {
+        Category c=tblCategory.getSelectionModel().getSelectedItem();
+        if (AlertMessage.showAlertYesNo()){
+        String sql="DELETE FROM laptop_sales.category WHERE categoryID = '"+c.getCategoryID()+"'";
             try {
                 ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
-                showdata();
+                showDatatableCategory();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-        else{
-            System.out.println("no");
         }
     }
 }

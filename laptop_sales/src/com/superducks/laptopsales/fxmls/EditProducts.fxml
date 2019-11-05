@@ -40,5 +40,6 @@
             <Image url="@../icons/web_ui_color/checkmark.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnairt" layoutX="279.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#btnaritClick" text="Thêm vào Giỏ" visible="false" />
    </children>
 </AnchorPane>
