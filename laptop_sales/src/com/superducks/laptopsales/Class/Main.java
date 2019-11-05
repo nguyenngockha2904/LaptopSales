@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         setPrimaryStage(primaryStage);
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/FormSales.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmls/LoginForm.fxml"));
         primaryStage.setTitle("Log In");
         primaryStage.setScene(new Scene(root));
         Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/laptop-icon.png");

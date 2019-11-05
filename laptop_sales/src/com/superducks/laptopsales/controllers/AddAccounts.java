@@ -10,8 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,6 +38,10 @@ public class AddAccounts {
     public ImageView btnClose;
     public PasswordField txtPassword;
     public PasswordField txtRetypePassword;
+    public Button btnImage;
+    public ImageView imgAvatar;
+    public String urlImage = "";
+    public AnchorPane addAccountsPane;
 
     public void initialize() {
         setUpAnyThings();
@@ -89,7 +96,7 @@ public class AddAccounts {
             phone = txtPhone.getText();
         if(checkUsername(username)) {
             if(AlertMessage.showAlertYesNo()) {
-                String sql = "INSERT INTO `accounts` ( `username`, `password`, `email`, `fullname`, `birthday`, `position`, `address`, `phone`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                String sql = "INSERT INTO `accounts` ( `username`, `password`, `email`, `fullname`, `birthday`, `position`, `address`, `phone`, `avatar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
                 Connection con = ConnectDatabase.Connect();
                 try {
                     assert con != null;
@@ -102,6 +109,7 @@ public class AddAccounts {
                     pst.setString(6, position);
                     pst.setString(7, address);
                     pst.setString(8, phone);
+                    pst.setString(9, urlImage);
                     pst.executeUpdate();
                     changed = true;
                     AlertMessage.showAlert("Added new account " + username, "tick");
@@ -159,5 +167,19 @@ public class AddAccounts {
         txtRetypePassword.setText("");
         btnAdd.setVisible(false);
         btnNonAdd.setVisible(true);
+    }
+
+    public void btnImage_Click(MouseEvent mouseEvent) {
+        Stage stage = (Stage) addAccountsPane.getScene().getWindow();
+        FileChooser fc= new FileChooser();
+        fc.setTitle("Choose a image ");
+        FileChooser.ExtensionFilter imageFilter=new FileChooser.ExtensionFilter("image Files","*.jpg","*.png");
+        fc.getExtensionFilters().add(imageFilter);
+        File file=fc.showOpenDialog(stage);
+        if(file !=null){
+            urlImage = file.toURI().toString();
+            Image image=new Image(urlImage);
+            imgAvatar.setImage(image);
+        }
     }
 }

@@ -25,14 +25,14 @@
                 <Image url="@../icons/web_ui_color/plus.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="btnDelete" fitHeight="95.0" fitWidth="30.0" layoutX="827.0" layoutY="125.0" onMouseClicked="#btnDeleteClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="18.0">
+        <ImageView fx:id="btnDelete" fitHeight="95.0" fitWidth="30.0" layoutX="827.0" layoutY="125.0" onMouseClicked="#btnDeleteClick" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="18.0">
             <image>
-                <Image url="@../icons/close.png" />
+                <Image url="@../icons/web_ui_color/delete.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="btnEdit" fitHeight="30.0" fitWidth="30.0" layoutX="827.0" layoutY="78.0" onMouseClicked="#btnEditClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="18.0">
+        <ImageView fx:id="btnEdit" fitHeight="30.0" fitWidth="30.0" layoutX="827.0" layoutY="78.0" onMouseClicked="#btnEditClick" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="18.0">
             <image>
-                <Image url="@../icons/edit.png" />
+                <Image url="@../icons/web_ui_color/compose.png" />
             </image>
         </ImageView>
     </children>

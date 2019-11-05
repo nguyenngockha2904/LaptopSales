@@ -1,4 +1,5 @@
 package com.superducks.laptopsales.controllers;
+
 import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
 import com.superducks.laptopsales.Class.Products;
@@ -23,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
+
 public class ManageCategories {
 
     public ComboBox cboCategory;
@@ -42,7 +44,7 @@ public class ManageCategories {
         String sql="select *from `category`";
         categoryid=new ArrayList<>();
         try {
-            ResultSet s=ConnectDatabase.Connect().createStatement().executeQuery(sql);
+            ResultSet s = ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (s.next()) {
                 categoryid.add(s.getString(1));
                 cboCategory.getItems().add(s.getString(2));
@@ -118,7 +120,6 @@ public class ManageCategories {
         }
     }
     private static Stage mainStage =new Stage();
-
     static void showForm(){
         Parent root;
         try {
@@ -136,8 +137,6 @@ public class ManageCategories {
     }
     public void btnAddclick(MouseEvent mouseEvent) {
         AddProducts.showForm();
-
-        showdata();
     }
     static void resetForm() {
         mainStage.close();
@@ -150,20 +149,15 @@ public class ManageCategories {
         EditProducts.ProductID=p.getProductId();
         EditProducts.CategoryID=p.getCategoryId();
         EditProducts.showForm();
-        showdata();
     }
     public void mouseclick(MouseEvent mouseEvent) {
         btnEdit.setVisible(true);
         btnDelete.setVisible(true);
-
-
     }
 
     public void btnDeleteClick(MouseEvent mouseEvent) {
         Products p=tblProducts.getSelectionModel().getSelectedItem();
         if(AlertMessage.showAlertYesNo()){
-//            System.out.println("yes");
-
             String sql="DELETE FROM products WHERE productID ="+p.getProductId();
             try {
                 ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
@@ -171,12 +165,9 @@ public class ManageCategories {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }
         else{
             System.out.println("no");
         }
-//
-
     }
 }

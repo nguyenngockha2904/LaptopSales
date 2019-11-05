@@ -8,16 +8,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,7 +43,11 @@ public class EditAccounts {
     public ImageView btnEdit;
     public ImageView btnNonEdit;
     private static Stage editAccountsStage = new Stage();
+    public Button btnImage;
+    public ImageView imgAvatar;
+    public AnchorPane editAccountsPane;
     private String email, fullname, password, position, birthday, address, phone;
+    private String urlImage = "";
 
     public void initialize() {
         cbxPosition.getItems().addAll("Admin", "Manager", "Staff");
@@ -60,16 +64,15 @@ public class EditAccounts {
             editAccountsStage.getIcons().add(icon);
             editAccountsStage.show();
             editAccountsStage.setResizable(false);
-            editAccountsStage.setOnCloseRequest(e->rsFormMA());
-        }
-        catch (IOException e) {
+            editAccountsStage.setOnCloseRequest(e -> rsFormMA());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void rsFormMA() {
-        if(changed.equals(true)) {
-            if(mainFormClick.equals(false))
+        if (changed.equals(true)) {
+            if (mainFormClick.equals(false))
                 ManageAccounts.resetForm();
             changed = false;
             mainFormClick = false;
@@ -79,14 +82,14 @@ public class EditAccounts {
     private void setUpAnyThings() {
         cbxPosition.setDisable(true);
         txtPassword.setDisable(true);
-        if(MainForm.loggedPosition.equals("admin") && !accountViewingPosition.equals("admin")) {
+        if (MainForm.loggedPosition.equals("admin") && !accountViewingPosition.equals("admin")) {
             cbxPosition.setDisable(false);
             txtPassword.setDisable(false);
         }
-        if(MainForm.loggedAccount.equals(accountViewing)) {
+        if (MainForm.loggedAccount.equals(accountViewing)) {
             txtPassword.setDisable(false);
         }
-        String sql = "select * from accounts where username = \""+accountViewing+"\"";
+        String sql = "select * from accounts where username = \"" + accountViewing + "\"";
         Connection con = ConnectDatabase.Connect();
         try {
             assert con != null;
@@ -99,6 +102,8 @@ public class EditAccounts {
                 txtPassword.setText(rst.getString("password"));
                 txtPhone.setText((rst.getString("phone")));
                 LocalDate date = LocalDate.parse(rst.getString("birthday"));
+                if(!rst.getString("avatar").equals(""))
+                    imgAvatar.setImage(new Image(rst.getString("avatar")));
                 dtpBirthday.setValue(date);
                 char[] c = rst.getString("position").toCharArray();
                 c[0] = Character.toUpperCase(c[0]);
@@ -120,19 +125,18 @@ public class EditAccounts {
     }
 
     public void textChanged(KeyEvent keyEvent) {
-        if(!password.equals(txtPassword.getText()) || !email.equals(txtEmail.getText()) || !fullname.equals(txtFullname.getText()) || !address.equals(txtAddress.getText()) || !phone.equals(txtPhone.getText())) {
+        if (!password.equals(txtPassword.getText()) || !email.equals(txtEmail.getText()) || !fullname.equals(txtFullname.getText()) || !address.equals(txtAddress.getText()) || !phone.equals(txtPhone.getText())) {
             btnEdit.setVisible(true);
             btnNonEdit.setVisible(false);
-        }
-        else {
+        } else {
             btnEdit.setVisible(false);
             btnNonEdit.setVisible(true);
         }
     }
 
     public void btnEdit_Click(MouseEvent mouseEvent) {
-        if(AlertMessage.showAlertYesNo()) {
-            String sql = "UPDATE `accounts` SET `password` = ?, `email` = ?, `fullname` = ?, `birthday` = ?, `position` = ?, `address` = ?, `phone` = ? WHERE (`username` = ?);";
+        if (AlertMessage.showAlertYesNo()) {
+            String sql = "UPDATE `accounts` SET `password` = ?, `email` = ?, `fullname` = ?, `birthday` = ?, `position` = ?, `address` = ?, `phone` = ?, `avatar` = ?  WHERE (`username` = ?);";
             Connection con = ConnectDatabase.Connect();
             try {
                 assert con != null;
@@ -144,12 +148,13 @@ public class EditAccounts {
                 pst.setString(5, cbxPosition.getValue().toString().toLowerCase());
                 pst.setString(6, txtAddress.getText());
                 pst.setString(7, txtPhone.getText());
-                pst.setString(8, txtUsername.getText());
+                pst.setString(8, urlImage);
+                pst.setString(9, txtUsername.getText());
                 pst.executeUpdate();
                 changed = true;
                 AlertMessage.showAlert("Saved changes", "tick");
-                if(MainForm.loggedAccount.equals(txtUsername.getText()))
-                    if(!MainForm.loggedPosition.equals(cbxPosition.getValue().toString().toLowerCase())) {
+                if (MainForm.loggedAccount.equals(txtUsername.getText()))
+                    if (!MainForm.loggedPosition.equals(cbxPosition.getValue().toString().toLowerCase())) {
                         AlertMessage.showAlert("Your position has been changed, You will have to login again", "warning");
                         editAccountsStage.close();
                         ManageAccounts.closeForm();
@@ -173,13 +178,28 @@ public class EditAccounts {
 
 
     public void textChanged_Second(ActionEvent actionEvent) {
-        if(!birthday.equals(dtpBirthday.getValue().toString()) || !position.equals(cbxPosition.getValue().toString().toLowerCase())) {
+        if (!birthday.equals(dtpBirthday.getValue().toString()) || !position.equals(cbxPosition.getValue().toString().toLowerCase())) {
             btnEdit.setVisible(true);
             btnNonEdit.setVisible(false);
-        }
-        else {
+        } else {
             btnEdit.setVisible(false);
             btnNonEdit.setVisible(true);
+        }
+    }
+
+    public void btnImage_Click(MouseEvent mouseEvent) {
+        Stage stage = (Stage) editAccountsStage.getScene().getWindow();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose a image ");
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("image Files", "*.jpg", "*.png");
+        fc.getExtensionFilters().add(imageFilter);
+        File file = fc.showOpenDialog(stage);
+        if (file != null) {
+            urlImage = file.toURI().toString();
+            Image image = new Image(urlImage);
+            imgAvatar.setImage(image);
+            btnEdit.setVisible(true);
+            btnNonEdit.setVisible(false);
         }
     }
 }

@@ -165,6 +165,7 @@ public class MainForm {
     }
 
     public void btnSales_Click(MouseEvent mouseEvent) {
+        FormSales.showForm();
     }
 
     public void btnInfo_Click(MouseEvent mouseEvent) {
