@@ -1,0 +1,41 @@
+.button-style {
+    -fx-border-radius: 5px;
+    -fx-background-color: #58CAA5;
+    -fx-text-fill: white;
+}
+
+.label-style {
+    -fx-font-weight: bold;
+}
+
+.body-style {
+    -fx-background-image: url("../images/clean-background.jpg");
+    -fx-background-size: cover;
+}
+
+.bg1 {
+    -fx-background-image: url("../images/1.jpg");
+    -fx-background-size: cover;
+}
+.bg2 {
+    -fx-background-image: url("../images/2.jpg");
+    -fx-background-size: cover;
+}
+.bg3 {
+    -fx-background-image: url("../images/3.jpg");
+    -fx-background-size: cover;
+}
+.bg4 {
+    -fx-background-image: url("../images/4.jpg");
+    -fx-background-size: cover;
+}
+
+.bg5{
+    -fx-background-image: url("../images/bg5.png");
+    -fx-background-size: cover;
+}
+
+.table-style {
+    -fx-alignment: center-right;
+}
+

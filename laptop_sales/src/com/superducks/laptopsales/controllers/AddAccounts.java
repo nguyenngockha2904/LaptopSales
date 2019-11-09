@@ -2,9 +2,6 @@ package com.superducks.laptopsales.controllers;
 
 import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,18 +10,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class AddAccounts {
-    private static Boolean changed = false;
+    static Boolean changed = false;
     public TextField txtUsername;
     public TextField txtFullname;
     public TextField txtEmail;
@@ -32,7 +26,7 @@ public class AddAccounts {
     public ComboBox<String> cbxPosition;
     public TextField txtAddress;
     public TextField txtPhone;
-    private static Stage addAccountsStage = new Stage();
+    static Stage addAccountsStage = new Stage();
     public ImageView btnNonAdd;
     public ImageView btnAdd;
     public ImageView btnClose;
@@ -40,29 +34,14 @@ public class AddAccounts {
     public PasswordField txtRetypePassword;
     public Button btnImage;
     public ImageView imgAvatar;
-    public String urlImage = "";
+    private String urlImage = "";
     public AnchorPane addAccountsPane;
 
     public void initialize() {
         setUpAnyThings();
     }
 
-    static void showForm() {
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/AddAccounts.fxml")));
-            addAccountsStage.setTitle("Add Accounts");
-            addAccountsStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/add-person.png");
-            addAccountsStage.getIcons().add(icon);
-            addAccountsStage.show();
-            addAccountsStage.setResizable(false);
-            addAccountsStage.setOnCloseRequest(e->rsFormMA());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    // First Set Up
     private void setUpAnyThings() {
         if(MainForm.loggedPosition.equals("admin")) {
             cbxPosition.getItems().addAll("Admin", "Manager", "Staff");
@@ -73,12 +52,7 @@ public class AddAccounts {
         dtpBirthday.setValue(LocalDate.now());
     }
 
-    private static void rsFormMA() {
-        if(changed.equals(true)) {
-            ManageAccounts.resetForm();
-            changed = false;
-        }
-    }
+    //Add
     public void btnAdd_Click(MouseEvent mouseEvent) {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
@@ -124,13 +98,14 @@ public class AddAccounts {
         }
     }
 
+    //Close
     public void btnClose_Click(MouseEvent mouseEvent) {
         if (AlertMessage.showAlertYesNo()) {
-            addAccountsStage.close();
-            ManageAccounts.resetForm();
+            addAccountsStage.close();;
         }
     }
 
+    //Check Username
     private Boolean checkUsername(String username) {
         Connection con = ConnectDatabase.Connect();
         String sql = "select * from accounts where username=\"" + username + "\"";
@@ -155,6 +130,7 @@ public class AddAccounts {
         }
     }
 
+    //Clear All Field
     private void clearAllField() {
         cbxPosition.setValue("Staff");
         dtpBirthday.setValue(LocalDate.now());
@@ -169,6 +145,7 @@ public class AddAccounts {
         btnNonAdd.setVisible(true);
     }
 
+    //Choose Image
     public void btnImage_Click(MouseEvent mouseEvent) {
         Stage stage = (Stage) addAccountsPane.getScene().getWindow();
         FileChooser fc= new FileChooser();

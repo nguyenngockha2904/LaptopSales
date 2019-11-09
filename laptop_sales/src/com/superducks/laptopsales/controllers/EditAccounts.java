@@ -2,12 +2,7 @@ package com.superducks.laptopsales.controllers;
 
 import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
-import com.superducks.laptopsales.Class.Main;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,18 +13,16 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class EditAccounts {
     static String accountViewing = "";
     static Boolean mainFormClick = false;
-    private static Boolean changed = false;
+    static Boolean changed = false;
     static String accountViewingPosition = "";
     public TextField txtUsername;
     public TextField txtEmail;
@@ -42,7 +35,7 @@ public class EditAccounts {
     public ImageView btnClose;
     public ImageView btnEdit;
     public ImageView btnNonEdit;
-    private static Stage editAccountsStage = new Stage();
+    static Stage editAccountsStage = new Stage();
     public Button btnImage;
     public ImageView imgAvatar;
     public AnchorPane editAccountsPane;
@@ -52,31 +45,6 @@ public class EditAccounts {
     public void initialize() {
         cbxPosition.getItems().addAll("Admin", "Manager", "Staff");
         setUpAnyThings();
-    }
-
-    static void showForm() {
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditAccounts.fxml")));
-            editAccountsStage.setTitle("Edit Accounts");
-            editAccountsStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/edit.png");
-            editAccountsStage.getIcons().add(icon);
-            editAccountsStage.show();
-            editAccountsStage.setResizable(false);
-            editAccountsStage.setOnCloseRequest(e -> rsFormMA());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void rsFormMA() {
-        if (changed.equals(true)) {
-            if (mainFormClick.equals(false))
-                ManageAccounts.resetForm();
-            changed = false;
-            mainFormClick = false;
-        }
     }
 
     private void setUpAnyThings() {
@@ -156,11 +124,7 @@ public class EditAccounts {
                 if (MainForm.loggedAccount.equals(txtUsername.getText()))
                     if (!MainForm.loggedPosition.equals(cbxPosition.getValue().toString().toLowerCase())) {
                         AlertMessage.showAlert("Your position has been changed, You will have to login again", "warning");
-                        editAccountsStage.close();
-                        ManageAccounts.closeForm();
-                        MainForm.closeForm();
-                        Main.getPrimaryStage().close();
-                        Main.getPrimaryStage().show();
+                        changed = true;
                     }
                 setUpAnyThings();
             } catch (SQLException e) {
@@ -172,7 +136,6 @@ public class EditAccounts {
     public void btnClose_Click(MouseEvent mouseEvent) {
         if (AlertMessage.showAlertYesNo()) {
             editAccountsStage.close();
-            ManageAccounts.resetForm();
         }
     }
 

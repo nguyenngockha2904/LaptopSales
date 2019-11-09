@@ -3,9 +3,6 @@ package com.superducks.laptopsales.controllers;
 import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -16,15 +13,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class EditProducts {
-    private static Boolean changed = false;
+    static Boolean changed = false;
     public TextField txtNameProduct;
     public ImageView imgProduct;
     public TextField txtPrice;
@@ -32,21 +26,21 @@ public class EditProducts {
     public TextField txtNSX;
     public TextField txtCategoryName;
     public Button btnImage;
-    public String urlimage;
+    String urlimage;
     public AnchorPane ap;
-    public static int ProductID;
-    public static String CategoryID;
-    public static int chage;
+    static int ProductID;
+    static String CategoryID;
+    static int chage;
     public ImageView btnUpdate;
     public ImageView btnClose;
-    private static Stage mainStage = new Stage();
+    static Stage mainStage = new Stage();
     public ImageView btnNonUpdate;
     public Button btnairt;
     String nameProduct, nsx, info, price;
 
     public void initialize() {
         if (chage==1){btnairt.setVisible(true);}
-        String sql = "Select categoryName from laptop_sales.category where categoryID='" + CategoryID + "'";
+        String sql = "Select categoryName from category where categoryID='" + CategoryID + "'";
         try {
             ResultSet rs = ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()) {
@@ -67,7 +61,7 @@ public class EditProducts {
         }
     }
     private void showData() {
-       String sql = "SELECT * FROM laptop_sales.products where productID='"+ProductID+"'";
+       String sql = "SELECT * FROM products where productID='"+ProductID+"'";
        try {
            ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()){
@@ -92,19 +86,7 @@ public class EditProducts {
 
 
     static void showForm(){
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditProducts.fxml")));
-            mainStage.setTitle("Edit Products");
-            mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/compose.png");
-            mainStage.getIcons().add(icon);
-            mainStage.showAndWait();
-            mainStage.setResizable(false);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void addImage(ActionEvent actionEvent) {
@@ -122,22 +104,14 @@ public class EditProducts {
         System.out.println(urlimage);
     }
 
-    private static void rsFormMC() {
-        if(changed.equals(true)) {
-            ManageCategories.resetForm();
-            changed = false;
-        }
-    }
-
     public void btnUpdateClick(MouseEvent mouseEvent) {
         if(AlertMessage.showAlertYesNo()) {
-            String sql="UPDATE laptop_sales.products SET name = '"+txtNameProduct.getText()+"', producer = '"+txtNSX.getText()+"', info = '"+txtInfo.getText()+"', img = '"+imgProduct.getImage().getUrl().toString()+"', price = '"+Integer.parseInt(txtPrice.getText())+"' WHERE (productID = '"+ProductID+"')";
+            String sql="UPDATE products SET name = '"+txtNameProduct.getText()+"', producer = '"+txtNSX.getText()+"', info = '"+txtInfo.getText()+"', img = '"+imgProduct.getImage().getUrl().toString()+"', price = '"+Integer.parseInt(txtPrice.getText())+"' WHERE (productID = '"+ProductID+"')";
             try {
                 int row = ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
                 System.out.println(row);
                 AlertMessage.showAlert("Information has been updated", "tick");
                 changed = true;
-                mainStage.close();
                 showForm();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -147,22 +121,18 @@ public class EditProducts {
 
     public void btnClose_Click(MouseEvent mouseEvent) {
         mainStage.close();
-        rsFormMC();
     }
 
     public void textChanged(KeyEvent keyEvent) {
         if(!nameProduct.equals(txtNameProduct.getText()) || !nsx.equals(txtNSX.getText()) || !info.equals(txtInfo.getText()) || !price.equals(txtPrice.getText()))
             if(!txtNameProduct.getText().equals("") && !txtInfo.getText().equals("") && !txtNSX.getText().equals("") && !txtPrice.getText().equals("")) {
                 btnUpdate.setVisible(true);
-                btnNonUpdate.setVisible(false);
-            }
+                            }
             else{
                 btnUpdate.setVisible(false);
-                btnNonUpdate.setVisible(true);
-            }
+                            }
         else{
             btnUpdate.setVisible(false);
-            btnNonUpdate.setVisible(true);
         }
     }
     int i=0;
@@ -171,7 +141,16 @@ public class EditProducts {
             FormSales.cout=i;
             i++;
             mainStage.close();
+            String sql="INSERT INTO cart (img, name, total) VALUES ('"+imgProduct.getImage().getUrl().toString()+"', '"+txtNameProduct.getText()+"', '"+txtPrice.getText()+"')";
+            try {
+                int r= ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
+                System.out.println("insert +"+r);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
+
 
     }
 }

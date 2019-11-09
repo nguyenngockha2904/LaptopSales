@@ -42,7 +42,7 @@ public class ManageAccounts {
     public void initialize() {
         showTable();
     }
-
+    //Show Form
     static void showForm() {
         Parent root;
         try {
@@ -51,22 +51,20 @@ public class ManageAccounts {
             mainStage.setScene(new Scene(root));
             Image icon = new Image("/com/superducks/laptopsales/icons/main_icons//accounts.png");
             mainStage.getIcons().add(icon);
-            mainStage.show();
             mainStage.setResizable(false);
+            mainStage.show();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    //Close Form
     static void closeForm() {
         mainStage.close();
     }
-    static void resetForm() {
-        mainStage.close();
-        showForm();
-    }
 
+    //Show Table
     private void showTable() {
         ObservableList<Person> data = FXCollections.observableArrayList();
         String sql = "select * from accounts";
@@ -93,10 +91,29 @@ public class ManageAccounts {
         tblAccounts.getSelectionModel().selectFirst();
     }
 
+    //Add Accounts
     public void btnAdd_Click(MouseEvent mouseEvent) {
-        AddAccounts.showForm();
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/AddAccounts.fxml")));
+            AddAccounts.addAccountsStage.setTitle("Add Accounts");
+            AddAccounts.addAccountsStage.setScene(new Scene(root));
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/add-person.png");
+            AddAccounts.addAccountsStage.getIcons().add(icon);
+            AddAccounts.addAccountsStage.setResizable(false);
+            AddAccounts.addAccountsStage.showAndWait();
+            if(AddAccounts.changed) {
+                AddAccounts.changed = false;
+                showTable();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+
+    //Delete Accounts
     public void btnDelete_Clicked(MouseEvent mouseEvent) {
         Person account = tblAccounts.getSelectionModel().getSelectedItem();
         String username = account.getUsername();
@@ -135,19 +152,37 @@ public class ManageAccounts {
             AlertMessage.showAlert("You don't have permission to delete this account", "error");
     }
 
+    //Edit Accounts
     public void btnEdit_Click(MouseEvent mouseEvent) {
         Person account = tblAccounts.getSelectionModel().getSelectedItem();
         EditAccounts.accountViewing = account.getUsername();
         EditAccounts.accountViewingPosition = account.getPosition();
-        EditAccounts.showForm();
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditAccounts.fxml")));
+            EditAccounts.editAccountsStage.setTitle("Edit Accounts");
+            EditAccounts.editAccountsStage.setScene(new Scene(root));
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/edit.png");
+            EditAccounts.editAccountsStage.getIcons().add(icon);
+            EditAccounts.editAccountsStage.setResizable(false);
+            EditAccounts.editAccountsStage.showAndWait();
+            if(EditAccounts.changed) {
+                EditAccounts.changed = false;
+                showTable();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    //Close
     public void btnClose_Click(MouseEvent mouseEvent) {
         if (AlertMessage.showAlertYesNo()) {
             mainStage.close();
         }
     }
 
+    //Class Person
     public static class Person {
         private final SimpleIntegerProperty id;
         private final SimpleStringProperty username;

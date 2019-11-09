@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="952.0" styleClass="body" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.MainForm">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="952.0" styleClass="body-style" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.MainForm">
    <children>
       <Pane prefHeight="93.0" prefWidth="952.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="84.0" fitWidth="106.0" layoutX="220.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="84.0" fitWidth="106.0" layoutX="205.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/main_icons/laptop.png" />
                </image>
             </ImageView>
-            <Label layoutX="323.0" layoutY="24.0" text="LAPTOP SALES APPLICATION" textFill="#58caa5">
+            <Label layoutX="308.0" layoutY="24.0" styleClass="label-style" stylesheets="@../css/styles.css" text="LAPTOP SALES APPLICATION" textFill="#58caa5">
                <font>
                   <Font size="32.0" />
                </font>

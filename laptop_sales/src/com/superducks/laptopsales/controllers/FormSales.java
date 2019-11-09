@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -40,14 +41,13 @@ public class FormSales {
 
     private void ShowData() {
 
-        String sql="select * from laptop_sales.products";
+        String sql="select * from products";
         ObservableList<ImageView> listIMG= FXCollections.observableArrayList();
         try {
             ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
             while (rs.next()){
                 String pid=rs.getString(1),cid=rs.getString(2);
-                Image img=new Image(rs.getString(6));
-                ImageView imageView=new ImageView(img);
+                ImageView imageView=new ImageView(new Image(rs.getString(6)));
                 imageView.setFitWidth(100);
                 imageView.setFitHeight(100);
                 imageView.setOnMouseClicked(e-> {
@@ -56,7 +56,6 @@ public class FormSales {
                 });
                 listIMG.add(imageView);
             }
-
             fpn.getChildren().addAll(listIMG);
 
         } catch (SQLException e) {
@@ -72,8 +71,8 @@ public class FormSales {
             mainStage.setScene(new Scene(root));
             Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/categories.png");
             mainStage.getIcons().add(icon);
-            mainStage.show();
             mainStage.setResizable(false);
+            mainStage.showAndWait();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -83,10 +82,22 @@ public class FormSales {
         EditProducts.CategoryID=cid;
         EditProducts.ProductID=Integer.parseInt(pid);
         EditProducts.chage=1;
-        EditProducts.showForm();
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditProducts.fxml")));
+            EditProducts.mainStage.setTitle("Infomation Products");
+            EditProducts.mainStage.setScene(new Scene(root));
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/list.png");
+            EditProducts.mainStage.getIcons().add(icon);
+            EditProducts.mainStage.setResizable(false);
+            EditProducts.mainStage.showAndWait();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public void seach(String categoryID){
-        String sql="SELECT * FROM laptop_sales.products where categoryID='"+categoryID+"'";
+        String sql="SELECT * FROM products where categoryID='"+categoryID+"'";
         ObservableList<ImageView> listIMG= FXCollections.observableArrayList();
         try {
             ResultSet rs= ConnectDatabase.Connect().createStatement().executeQuery(sql);
@@ -135,5 +146,9 @@ public class FormSales {
 
     public void itmLoaShow(ActionEvent actionEvent) {
         seach("loa");
+    }
+
+    public void btnCartClick(MouseEvent mouseEvent) {
+        CartForm.showForm();
     }
 }

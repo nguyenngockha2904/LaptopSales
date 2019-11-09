@@ -10,48 +10,48 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="addAccountsPane" prefHeight="461.0" prefWidth="953.0" styleClass="body" stylesheets="@../css/manage-accounts.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.AddAccounts">
+<AnchorPane fx:id="addAccountsPane" prefHeight="461.0" prefWidth="925.0" styleClass="bg4" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.AddAccounts">
     <children>
-        <Label layoutX="484.0" layoutY="34.0" text="Username" />
-        <TextField fx:id="txtUsername" layoutX="606.0" layoutY="30.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="82.0" text="Email" />
-        <TextField fx:id="txtEmail" layoutX="607.0" layoutY="78.0" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="128.0" text="Fullname" />
-        <TextField fx:id="txtFullname" layoutX="606.0" layoutY="124.0" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="174.0" text="Password" />
-        <PasswordField fx:id="txtPassword" layoutX="607.0" layoutY="170.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="219.0" text="Re-type Password" />
-        <PasswordField fx:id="txtRetypePassword" layoutX="606.0" layoutY="215.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="266.0" text="Birthday" />
-        <DatePicker fx:id="dtpBirthday" editable="false" layoutX="607.0" layoutY="262.0" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="310.0" text="Position" />
-        <ComboBox fx:id="cbxPosition" layoutX="607.0" layoutY="306.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="359.0" text="Address" />
-        <TextField fx:id="txtAddress" layoutX="607.0" layoutY="355.0" prefHeight="25.0" prefWidth="247.0" />
-        <Label layoutX="484.0" layoutY="408.0" text="Phone" />
-        <TextField fx:id="txtPhone" layoutX="607.0" layoutY="404.0" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="35.0" text="Username" />
+        <TextField fx:id="txtUsername" layoutX="569.0" layoutY="31.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="83.0" text="Email" />
+        <TextField fx:id="txtEmail" layoutX="570.0" layoutY="79.0" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="129.0" text="Fullname" />
+        <TextField fx:id="txtFullname" layoutX="569.0" layoutY="125.0" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="175.0" text="Password" />
+        <PasswordField fx:id="txtPassword" layoutX="570.0" layoutY="171.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="220.0" text="Re-type Password" />
+        <PasswordField fx:id="txtRetypePassword" layoutX="569.0" layoutY="216.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="267.0" text="Birthday" />
+        <DatePicker fx:id="dtpBirthday" editable="false" layoutX="570.0" layoutY="263.0" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="311.0" text="Position" />
+        <ComboBox fx:id="cbxPosition" layoutX="570.0" layoutY="307.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="360.0" text="Address" />
+        <TextField fx:id="txtAddress" layoutX="570.0" layoutY="356.0" prefHeight="25.0" prefWidth="247.0" />
+        <Label layoutX="447.0" layoutY="409.0" text="Phone" />
+        <TextField fx:id="txtPhone" layoutX="570.0" layoutY="405.0" prefHeight="25.0" prefWidth="247.0" />
 
-        <ImageView fx:id="btnNonAdd" fitHeight="40.0" fitWidth="40.0" layoutX="884.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="btnNonAdd" fitHeight="40.0" fitWidth="40.0" layoutX="847.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/web_ui_brown/plus.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="btnAdd" fitHeight="40.0" fitWidth="40.0" layoutX="884.0" layoutY="34.0" onMouseClicked="#btnAdd_Click" pickOnBounds="true" preserveRatio="true" visible="false">
+        <ImageView fx:id="btnAdd" fitHeight="40.0" fitWidth="40.0" layoutX="847.0" layoutY="35.0" onMouseClicked="#btnAdd_Click" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@../icons/web_ui_color/plus.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="btnClose" fitHeight="40.0" fitWidth="40.0" layoutX="884.0" layoutY="82.0" onMouseClicked="#btnClose_Click" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="btnClose" fitHeight="40.0" fitWidth="40.0" layoutX="847.0" layoutY="83.0" onMouseClicked="#btnClose_Click" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/web_ui_color/delete.png" />
             </image>
         </ImageView>
-      <ImageView fx:id="imgAvatar" fitHeight="350.0" fitWidth="350.0" layoutX="68.0" layoutY="30.0" pickOnBounds="true">
+      <ImageView fx:id="imgAvatar" fitHeight="350.0" fitWidth="350.0" layoutX="31.0" layoutY="31.0" pickOnBounds="true">
          <image>
             <Image url="@../images/noImg.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnImage" layoutX="168.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#btnImage_Click" prefHeight="25.0" prefWidth="150.0" text="Choose Image" />
+      <Button fx:id="btnImage" layoutX="131.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#btnImage_Click" prefHeight="25.0" prefWidth="150.0" text="Choose Image" />
 
 
     </children>

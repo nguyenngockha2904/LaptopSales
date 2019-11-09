@@ -85,10 +85,6 @@ public class MainForm {
         }
     }
 
-    static void closeForm() {
-        mainStage.close();
-    }
-
     @FXML
     private void itmLogOut_Click(ActionEvent actionEvent) throws IOException {
         if (AlertMessage.showAlertYesNo()) {
@@ -171,7 +167,18 @@ public class MainForm {
     public void btnInfo_Click(MouseEvent mouseEvent) {
         EditAccounts.accountViewing = loggedAccount;
         EditAccounts.mainFormClick = true;
-        EditAccounts.showForm();
+        Parent root;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditAccounts.fxml")));
+            EditAccounts.editAccountsStage.setTitle("Edit Accounts");
+            EditAccounts.editAccountsStage.setScene(new Scene(root));
+            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/edit.png");
+            EditAccounts.editAccountsStage.getIcons().add(icon);
+            EditAccounts.editAccountsStage.setResizable(false);
+            EditAccounts.editAccountsStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btnCategories_MouseClicked(MouseEvent mouseEvent) {

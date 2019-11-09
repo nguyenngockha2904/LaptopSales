@@ -1,5 +1,6 @@
 package com.superducks.laptopsales.controllers;
 
+import com.superducks.laptopsales.Class.AlertMessage;
 import com.superducks.laptopsales.Class.ConnectDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,26 +16,27 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class EditCategory {
+    static boolean changed = false;
     public static String categoryID;
     public static String categoryName;
-    private static Stage mainStage =new Stage();
+    static Stage mainStage = new Stage();
     public static int chage;
     public TextField txtcategoryID;
     public TextField txtcategoryName;
     public ImageView btnAdd;
     public ImageView btnOut;
     public ImageView btnAccept;
+    public ImageView btnNonAdd;
+    public ImageView btnNonAccept;
+
     public void initialize(){
         if(chage==1){
             btnAccept.setVisible(true);
-            txtcategoryID.setDisable(true);
             showDataWithEdit();
         }else{
             txtcategoryID.setEditable(true);
-            btnAccept.setVisible(false);
             btnAdd.setVisible(true);
         }
-        chage=0;
     }
 
     private void showDataWithEdit() {
@@ -42,38 +44,26 @@ public class EditCategory {
         txtcategoryName.setText(categoryName);
     }
 
-    static void showForm(){
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditCategory.fxml")));
-            mainStage.setTitle("Manager Category");
-            mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/categories.png");
-            mainStage.getIcons().add(icon);
-            mainStage.showAndWait();
-            mainStage.setResizable(false);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void btnAcceptClicked(MouseEvent mouseEvent) {
-        String sql="UPDATE laptop_sales.category SET categoryName = '"+txtcategoryName.getText()+"' WHERE categoryID = '"+txtcategoryID.getText()+"'";
+        String sql="UPDATE category SET categoryName = '"+txtcategoryName.getText()+"' WHERE categoryID = '"+txtcategoryID.getText()+"'";
         try {
             ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
-            mainStage.close();
+            AlertMessage.showAlert("Updated all information", "tick");
+            changed = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void btnAddClicked(MouseEvent mouseEvent) {
-        String sql="INSERT INTO laptop_sales.category(categoryID,categoryName) VALUES ('"+txtcategoryID.getText()+"', '"+txtcategoryName.getText()+"')";
+        String sql="INSERT INTO category(categoryID,categoryName) VALUES ('"+txtcategoryID.getText()+"', '"+txtcategoryName.getText()+"')";
         try {
             ConnectDatabase.Connect().prepareStatement(sql).executeUpdate();
-            mainStage.close();
-
+            AlertMessage.showAlert("Added new category", "tick");
+            txtcategoryID.setText("");
+            txtcategoryName.setText("");
+            changed = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
