@@ -70,3 +70,43 @@ INSERT INTO `laptop_sales`.`products` (`productID`, `categoryID`, `name`, `produ
 INSERT INTO `laptop_sales`.`products` (`productID`, `categoryID`, `name`, `producer`, `info`, `img`, `price`) VALUES ('23', 'ch', 'Chuột Dare-U EM908 RGB', 'Dare-U', 'Tình Trạng : Có sẵn hàng\n\nBảo Hành : 24 tháng\n\nLed : RGB', 'file:/C:/Git/laptop_sales/src/com/superducks/laptopsales/images/ch3.jpg', '390000');
 INSERT INTO `laptop_sales`.`products` (`productID`, `categoryID`, `name`, `producer`, `info`, `img`, `price`) VALUES ('24', 'tn', 'Tai nghe DareU EH722S 7.1', ' Dare-U', 'Tình Trạng : Mới 100% - Fullbox\n\n· Bảo Hành : 12 tháng  \n\n· Màu sắc: Đen\n\n· Led: RGB', 'file:/C:/Git/laptop_sales/src/com/superducks/laptopsales/images/loa2.jpg', '590000');
 INSERT INTO `laptop_sales`.`products` (`productID`, `categoryID`, `name`, `producer`, `info`, `img`, `price`) VALUES ('25', 'loa', 'Loa Logitech Z333', 'Logitech', 'Nhà sản xuất : Logitech\nTình trạng : Fullbox-100%\nBảo hành : 12 Tháng', 'file:/C:/Git/laptop_sales/src/com/superducks/laptopsales/images/Loa1.jpg', '1490000');
+
+CREATE TABLE `laptop_sales`.`bill` (
+  `idbill` INT(11) NOT NULL AUTO_INCREMENT,
+  `idUser` INT(10) NOT NULL,
+  `date` DATETIME NOT NULL,
+  `total` INT(11) NOT NULL,
+  PRIMARY KEY (`idbill`),
+  INDEX `FK_bill_accounts_idx` (`idUser` ASC) VISIBLE,
+  CONSTRAINT `FK_bill_accounts`
+    FOREIGN KEY (`idUser`)
+    REFERENCES `laptop_sales`.`accounts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `laptop_sales`.`billinfo` (
+  `idbill` INT(11) NOT NULL,accounts
+  `productID` INT(11) NOT NULL,
+  `amount` INT(11) NOT NULL,
+  `total` INT(11) NOT NULL,
+  PRIMARY KEY (`idbill`, `productID`),
+  INDEX `FK_billinfo_products_idx` (`productID` ASC) VISIBLE,
+  CONSTRAINT `FK_billinfo_products`
+    FOREIGN KEY (`productID`)
+    REFERENCES `laptop_sales`.`products` (`productID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FX_billinfo_bill`
+    FOREIGN KEY (`idbill`)
+    REFERENCES `laptop_sales`.`bill` (`idbill`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+    
+    CREATE TABLE `laptop_sales`.`cart` (
+  `idcart` INT NOT NULL AUTO_INCREMENT,
+  `img` LONGTEXT NULL,
+  `name` VARCHAR(45) NULL,
+  `total` VARCHAR(45) NULL,
+  PRIMARY KEY (`idcart`));
+
+

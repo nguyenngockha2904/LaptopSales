@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="425.0" styleClass="body" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.LoginForm">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="425.0" styleClass="body-style" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.LoginForm">
    <children>
       <BorderPane prefHeight="241.0" prefWidth="426.0">
          <top>
@@ -22,7 +22,7 @@
                         <Image url="@../icons/main_icons/laptop.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="title" stylesheets="@../css/login.css" text="LAPTOP SALES">
+                  <Label text="LAPTOP SALES">
                      <font>
                         <Font name="Candara Light" size="40.0" />
                      </font>
@@ -33,7 +33,7 @@
          <center>
             <Pane fx:id="" prefHeight="138.0" prefWidth="426.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="22.0" layoutY="26.0" stylesheets="@../css/login.css" text="Username:">
+                  <Label layoutX="22.0" layoutY="26.0" text="Username:">
                      <font>
                         <Font name="Centaur" size="16.0" />
                      </font>
@@ -48,7 +48,7 @@
                         <Font name="Centaur" size="12.0" />
                      </font>
                   </PasswordField>
-                  <Label layoutX="24.0" layoutY="79.0" stylesheets="@../css/login.css" text="Password:">
+                  <Label layoutX="24.0" layoutY="79.0" text="Password:">
                      <font>
                         <Font name="Centaur" size="16.0" />
                      </font>

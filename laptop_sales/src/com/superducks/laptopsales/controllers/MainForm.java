@@ -76,9 +76,9 @@ public class MainForm {
             mainStage.setScene(new Scene(root));
             Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/laptop-icon.png");
             mainStage.getIcons().add(icon);
-            mainStage.show();
             mainStage.setResizable(false);
             mainStage.setOnCloseRequest(e->Platform.exit());
+            mainStage.showAndWait();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -151,7 +151,9 @@ public class MainForm {
     }
 
     public void btnAccounts_Click(MouseEvent mouseEvent) {
+        mainStage.hide();
         ManageAccounts.showForm();
+        mainStage.show();
     }
 
     public void btnClose_Click(ActionEvent actionEvent) {
@@ -161,7 +163,10 @@ public class MainForm {
     }
 
     public void btnSales_Click(MouseEvent mouseEvent) {
+        mainStage.hide();
         FormSales.showForm();
+        mainStage.show();
+
     }
 
     public void btnInfo_Click(MouseEvent mouseEvent) {
@@ -182,6 +187,8 @@ public class MainForm {
     }
 
     public void btnCategories_MouseClicked(MouseEvent mouseEvent) {
+        mainStage.hide();
         ManageCategories.showForm();
+        mainStage.show();
     }
 }

@@ -1,37 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Stagepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="757.0" styleClass="bg5" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.FormSales">
-   <children>
-      <FlowPane fx:id="fpn" layoutX="16.0" layoutY="57.0" prefHeight="583.0" prefWidth="726.0" styleClass="bg5" stylesheets="@../css/manage-accounts.css" />
-      <MenuBar layoutY="2.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Danh mục sản phẩm">
-            <items>
-              <MenuItem fx:id="itmLaptop" mnemonicParsing="false" onAction="#itmLaptopShow" text="Laptop" />
-                  <MenuItem fx:id="itmLkPC" mnemonicParsing="false" onAction="#itmLkPCshow" text="Linh kiện PC" />
-                  <MenuItem fx:id="itmManHinh" mnemonicParsing="false" onAction="#itmManHinhShow" text="Màn Hình" />
-                  <MenuItem fx:id="itmBanPhim" mnemonicParsing="false" onAction="#itmBanPhimShow" text="Bàn Phím" />
-                  <MenuItem fx:id="itmchuot" mnemonicParsing="false" onAction="#itmchuotShow" text="Chuột" />
-                  <MenuItem fx:id="itmTaiNghe" mnemonicParsing="false" onAction="#itmTaiNgheShow" text="Tai Nghe" />
-                  <MenuItem fx:id="itmLoa" mnemonicParsing="false" onAction="#itmLoaShow" text="Loa" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fx:id="btnCart" fitHeight="31.0" fitWidth="45.0" layoutX="692.0" layoutY="12.0" onMouseClicked="#btnCartClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icons/sales/cart.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="lblcount" layoutX="715.0" layoutY="6.0" text="1" textFill="#dd0a0a" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="509.0" prefWidth="850.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.FormSales">
+   <top>
+      <VBox styleClass="bg-light-grey" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="43.0" prefWidth="1000.0">
+               <children>
+                  <ImageView fx:id="btnCart" fitHeight="31.0" fitWidth="45.0" onMouseClicked="#btnCartClick" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../icons/sales/cart.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <Text blendMode="SRC_ATOP" strokeType="OUTSIDE" strokeWidth="0.0" text="Danh Sách Sản Phẩm" wrappingWidth="399.13671875">
+                     <styleClass>
+                        <String fx:value="fn-24" />
+                        <String fx:value="txt-Center" />
+                     </styleClass>
+                     <font>
+                        <Font name="Times New Roman" size="12.0" />
+                     </font>
+                  </Text>
+                  <Button cache="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="Thêm">
+                     <styleClass>
+                        <String fx:value="bg-green" />
+                        <String fx:value="fn-14" />
+                        <String fx:value="fill-white" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button cache="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="67.0" text="Export">
+                     <styleClass>
+                        <String fx:value="bg-green" />
+                        <String fx:value="fn-14" />
+                        <String fx:value="fill-white" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button cache="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="Import">
+                     <styleClass>
+                        <String fx:value="bg-green" />
+                        <String fx:value="fn-14" />
+                        <String fx:value="fill-white" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox>
+               <children>
+                  <ComboBox fx:id="cbcategory" blendMode="MULTIPLY" onAction="#CbCategoryClick" prefWidth="176.0" promptText="Danh Mục Sản Phẩm">
+                     <styleClass>
+                        <String fx:value="bg-transparent" />
+                        <String fx:value="fn-14" />
+                        <String fx:value="txt-Center" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="cbSearch" blendMode="MULTIPLY" prefHeight="26.0" prefWidth="176.0" promptText="Nhập kho Lâu nhất">
+                     <styleClass>
+                        <String fx:value="bg-transparent" />
+                        <String fx:value="txt-Center" />
+                        <String fx:value="fn-14" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <HBox>
+                     <children>
+                        <TextField fx:id="txtForm" promptText="từ :">
+                           <styleClass>
+                              <String fx:value="bg-transparent" />
+                              <String fx:value="fn-14" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="txtTo" promptText="Đến : ">
+                           <styleClass>
+                              <String fx:value="bg-transparent" />
+                              <String fx:value="fn-14" />
+                           </styleClass>
+                        </TextField>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#Search" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/search.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <ScrollPane prefHeight="456.0" prefWidth="844.0" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="tpn" alignment="TOP_CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="447.0" prefWidth="840.0" styleClass="bg-light-grey" vgap="10.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TilePane>
+         </content>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </ScrollPane>
+   </left>
+</BorderPane>

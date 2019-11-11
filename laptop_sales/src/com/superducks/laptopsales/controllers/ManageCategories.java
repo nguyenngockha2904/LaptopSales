@@ -110,31 +110,16 @@ public class ManageCategories {
             Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/categories.png");
             mainStage.getIcons().add(icon);
             mainStage.setResizable(false);
-            mainStage.show();
+            mainStage.showAndWait();
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
     public void btnAddclick(MouseEvent mouseEvent) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/AddProducts.fxml")));
-            AddProducts.mainStage.setTitle("Add Products");
-            AddProducts.mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/plus.png");
-            AddProducts.mainStage.getIcons().add(icon);
-            AddProducts.mainStage.setResizable(false);
-            AddProducts.mainStage.showAndWait();
-            if(AddProducts.changed) {
-                AddProducts.changed = false;
-                showDatatableCategory();
-                showdataTableProduct();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        EditProducts.chage=1;
+        EditProducts.showForm("Add Products");
+        showDatatableCategory();showdataTableProduct();
     }
 
     public void btnEditClick(MouseEvent mouseEvent) {
@@ -143,23 +128,11 @@ public class ManageCategories {
         EditProducts.ProductID=p.getProductId();
         EditProducts.CategoryID=p.getCategoryId();
         EditProducts.chage = 0;
-        Parent root;
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(LoginForm.class.getClassLoader().getResource("com/superducks/laptopsales/fxmls/EditProducts.fxml")));
-            EditProducts.mainStage.setTitle("Edit Products");
-            EditProducts.mainStage.setScene(new Scene(root));
-            Image icon = new Image("/com/superducks/laptopsales/icons/web_ui_color/compose.png");
-            EditProducts.mainStage.getIcons().add(icon);
-            EditProducts.mainStage.setResizable(false);
-            EditProducts.mainStage.showAndWait();
-            if(EditProducts.changed) {
-                EditProducts.changed = false;
-                showDatatableCategory();
-                showdataTableProduct();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+        EditProducts.showForm("Edit Products");
+        if(EditProducts.changed) {
+            EditProducts.changed = false;
+            showDatatableCategory();
+            showdataTableProduct();
         }
     }
     public void mouseclick(MouseEvent mouseEvent) {

@@ -2,4 +2,8 @@
     -fx-background-image: url("../images/clean-background.jpg");
     -fx-background-size: cover;
 }
+.clone{
+    -fx-background-image: url("../images/4k3.png");
+    -fx-background-size: cover;
+}
 
