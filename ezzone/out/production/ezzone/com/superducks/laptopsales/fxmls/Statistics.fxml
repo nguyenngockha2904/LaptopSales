@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="638.0" prefWidth="1334.0" styleClass="bg3" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.Statistics">
+    <children>
+        <HBox>
+            <children>
+                <TableView fx:id="tblAccounts" onMouseClicked="#tblAccounts_Clicked" prefHeight="305.0" prefWidth="291.0">
+                    <columns>
+                        <TableColumn fx:id="clmUsername" prefWidth="94.0" style="-fx-alignment: CENTER;" text="Username" />
+                        <TableColumn fx:id="clmFullname" prefWidth="195.0" style="-fx-alignment: CENTER;" text="Fullname" />
+                    </columns>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                    </HBox.margin>
+                </TableView>
+                <BarChart fx:id="barChartStatistics" animated="false" legendVisible="false" prefHeight="305.0" prefWidth="375.0" style="-fx-background-color: white;" title="Bar Chart">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </BarChart>
+            </children>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+        </HBox>
+        <TableView fx:id="tblBills" layoutX="14.0" layoutY="330.0" onMouseClicked="#tblBills_Clicked" prefHeight="257.0" prefWidth="688.0">
+            <columns>
+                <TableColumn fx:id="clmBillID" prefWidth="67.0" style="-fx-alignment: CENTER;" text="Bill ID" />
+                <TableColumn fx:id="clmUser" prefWidth="172.0" style="-fx-alignment: CENTER;" text="User" />
+                <TableColumn fx:id="clmBuyer" prefWidth="187.0" style="-fx-alignment: CENTER;" text="Buyer" />
+                <TableColumn fx:id="clmDateCreated" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Date Created" />
+                <TableColumn fx:id="clmTotalPrice" prefWidth="110.0" style="-fx-alignment: CENTER;" text="Total Price" />
+            </columns>
+        </TableView>
+        <ImageView fx:id="btnNonView" fitHeight="40.0" fitWidth="40.0" layoutX="662.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/embems/symboliclink.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnView" fitHeight="40.0" fitWidth="40.0" layoutX="662.0" layoutY="594.0" onMouseClicked="#btnView_Clicked" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/embems/locallymodified.png" />
+            </image>
+        </ImageView>
+        <PieChart fx:id="pieChartStatistics" labelLineLength="25.0" layoutX="716.0" layoutY="11.0" prefHeight="618.0" prefWidth="618.0" scaleShape="false" stylesheets="@../css/styles.css" title="Pie Chart" />
+        <HBox layoutX="101.0" layoutY="594.0" prefHeight="60.0" prefWidth="564.0">
+            <children>
+            <HBox prefHeight="60.0" prefWidth="279.0">
+               <children>
+                        <DatePicker fx:id="dtpFrom" editable="false" onAction="#dtpFromSearch" prefHeight="31.0" prefWidth="140.0">
+                            <styleClass>
+                                <String fx:value="bg-transparent" />
+                                <String fx:value="fn-16" />
+                            </styleClass>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                        </DatePicker>
+                        <DatePicker fx:id="dtpTo" disable="true" prefHeight="31.0" prefWidth="134.0">
+                            <styleClass>
+                                <String fx:value="bg-transparent" />
+                                <String fx:value="fn-16" />
+                                <String fx:value="txt-Center" />
+                            </styleClass>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                        </DatePicker>
+               </children>
+            </HBox>
+                <VBox prefHeight="64.0" prefWidth="306.0">
+                    <children>
+                        <HBox>
+                            <children>
+                                <RadioButton fx:id="radDay" mnemonicParsing="false" onAction="#dtpFromSearch" styleClass="fn-16" text="Day" textFill="#f5eded">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" right="5.0" />
+                                    </HBox.margin>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                                </RadioButton>
+                                <RadioButton fx:id="radMonth" mnemonicParsing="false" onAction="#dtpFromSearch" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Month" textFill="#f5eded">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                                    </HBox.margin>
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                                </RadioButton>
+                                <RadioButton fx:id="radYear" mnemonicParsing="false" onAction="#dtpFromSearch" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Year" textFill="#f5eded">
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                                    </HBox.margin>
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                                </RadioButton>
+                              <RadioButton fx:id="radBetween" mnemonicParsing="false" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="During" textFill="#f5eded">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </HBox.margin>
+                              </RadioButton>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+        <RadioButton fx:id="radallUser" layoutX="14.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#radAllUserClicked" styleClass="fn-16" text="All User" textFill="#f5eded">
+         <font>
+            <Font size="8.0" />
+         </font></RadioButton>
+    </children>
+</AnchorPane>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" prefHeight="542.0" prefWidth="991.0" styleClass="bg6" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.ManageCategories">
+    <children>
+        <TableView fx:id="tblProducts" layoutX="329.0" layoutY="14.0" onMouseClicked="#mouseclick" prefHeight="462.0" prefWidth="631.0" styleClass="table-style" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="14.0">
+            <columns>
+                <TableColumn fx:id="clmID" prefWidth="97.0" style="-fx-alignment: CENTER;" text="Product ID" />
+                <TableColumn fx:id="clmCategoryID" prefWidth="104.0" style="-fx-alignment: CENTER;" text="Category ID" />
+                <TableColumn fx:id="clmName" minWidth="0.0" prefWidth="281.0" style="-fx-alignment: CENTER;" text="Name" />
+                <TableColumn fx:id="clmPrice" prefWidth="146.0" style="-fx-alignment: CENTER;" text="Price" />
+            </columns>
+        </TableView>
+        <ImageView fx:id="btnAdd" fitHeight="30.0" fitWidth="30.0" layoutX="982.0" layoutY="34.0" onMouseClicked="#btnAddclick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0">
+            <image>
+                <Image url="@../icons/web_ui_color/plus.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnEdit" fitHeight="30.0" fitWidth="30.0" layoutX="982.0" layoutY="81.0" onMouseClicked="#btnEditClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0">
+            <image>
+                <Image url="@../icons/web_ui_color/compose.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnDelete" fitHeight="95.0" fitWidth="30.0" layoutX="982.0" layoutY="128.0" onMouseClicked="#btnDeleteClick" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0">
+            <image>
+                <Image url="@../icons/web_ui_color/delete.png" />
+            </image>
+        </ImageView>
+      <ImageView fx:id="btnAddCategory" fitHeight="30.0" fitWidth="30.0" layoutX="281.0" layoutY="34.0" onMouseClicked="#btnAddCategory" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="726.0">
+         <image>
+            <Image url="@../icons/web_ui_color/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnCateEdit" fitHeight="30.0" fitWidth="30.0" layoutX="281.0" layoutY="81.0" onMouseClicked="#btnCateEditClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/compose.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnCatedelete" fitHeight="30.0" fitWidth="30.0" layoutX="281.0" layoutY="128.0" onMouseClicked="#btnCateDeleteClick" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="726.0">
+         <image>
+            <Image url="@../icons/web_ui_color/delete.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblCategory" layoutX="14.0" layoutY="14.0" onMouseClicked="#tblCategoryClicked" prefHeight="462.0" prefWidth="249.0" styleClass="table-style" stylesheets="@../css/styles.css" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="clmCateID" prefWidth="83.0" style="-fx-alignment: CENTER;" text="Category ID" />
+          <TableColumn fx:id="clmCategoryName" prefWidth="164.0" style="-fx-alignment: CENTER;" text="Category Name" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="710.0" prefWidth="461.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.SellOrder">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="429.0" style="-fx-font-weight: BOLD;" text="HOÁ ĐƠN BÁN HÀNG">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblBill" layoutX="14.0" layoutY="116.0" prefHeight="482.0" prefWidth="429.0" styleClass="table-style" stylesheets="@../css/styles.css">
+         <columns>
+            <TableColumn fx:id="clmProducts" prefWidth="233.0" style="-fx-alignment: CENTER;" text="Sản Phẩm" />
+            <TableColumn fx:id="clmAmount" prefWidth="92.0" style="-fx-alignment: CENTER;" text="Số Lượng" />
+            <TableColumn fx:id="clmPrice" prefWidth="101.0" style="-fx-alignment: CENTER;" text="Thành tiền" />
+         </columns>
+      </TableView>
+      <Label fx:id="lblBuyer" alignment="TOP_LEFT" layoutX="14.0" layoutY="56.0" prefHeight="30.0" prefWidth="295.0" text="Người mua hàng:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPhone" alignment="TOP_LEFT" layoutX="14.0" layoutY="86.0" prefHeight="30.0" prefWidth="306.0" text="Số điện thoại:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotalePrice" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="610.0" prefHeight="25.0" prefWidth="429.0" text="Tổng tiền: 0 VND">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBillNumber" alignment="TOP_RIGHT" layoutX="341.0" layoutY="56.0" prefHeight="30.0" prefWidth="100.0" text="Số:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCreatedBy" alignment="CENTER_RIGHT" layoutX="15.0" layoutY="635.0" prefHeight="25.0" prefWidth="429.0" text="Người tạo hoá đơn:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="343.0" layoutY="86.0" prefHeight="30.0" prefWidth="100.0" text="Đơn vị: EzZone">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

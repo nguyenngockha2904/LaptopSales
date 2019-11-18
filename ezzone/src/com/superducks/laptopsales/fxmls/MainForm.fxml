@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="952.0" styleClass="body-style" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.MainForm">
+   <children>
+      <Pane prefHeight="120.0" prefWidth="952.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="109.0" fitWidth="112.0" layoutX="125.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/main_icons/lt.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="258.0" layoutY="37.0" styleClass="label-style" stylesheets="@../css/styles.css" text="APPLICATION BY SUPERDUCKS TEAM" textFill="#4f5d73">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <MenuBar layoutY="93.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="952.0" style="-fx-background-color: white;">
+         <menus>
+            <Menu mnemonicParsing="false" text="Account">
+               <items>
+                  <MenuItem fx:id="itmAccount" mnemonicParsing="false" onAction="#btnInfoMenu_Click" text="non-login" />
+                  <MenuItem fx:id="itmLogOut" mnemonicParsing="false" onAction="#itmLogOut_Click" text="Log out" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Application">
+               <items>
+                  <MenuItem fx:id="btnClose" mnemonicParsing="false" onAction="#btnClose_Click" text="Close" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TabPane layoutY="118.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="426.0" prefWidth="952.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tabHome" text="Home">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="285.0" prefWidth="952.0">
+                     <children>
+                        <ImageView fx:id="btnInfo" fitHeight="160.0" fitWidth="160.0" layoutX="394.0" layoutY="89.0" onMouseClicked="#btnInfo_Click" onMouseExited="#btnInfo_MouseExited" onMouseMoved="#btnInfo_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/view-info.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="btnProducts" fitHeight="160.0" fitWidth="160.0" layoutX="649.0" layoutY="89.0" onMouseClicked="#btnProducts_Clicked" onMouseExited="#btnProducts_MouseExited" onMouseMoved="#btnProducts_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/items.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="btnSales" fitHeight="160.0" fitWidth="175.0" layoutX="143.0" layoutY="89.0" onMouseClicked="#btnSales_Click" onMouseExited="#btnSales_MouseExited" onMouseMoved="#btnSales_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/laptop-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblSales" layoutX="192.0" layoutY="268.0" text="Sales" textFill="#4f5d73" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblInfo" layoutX="452.0" layoutY="268.0" text="Info" textFill="#77b4be" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblProducts" layoutX="675.0" layoutY="268.0" text="Products" textFill="#ce5959" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabAdmin" text="Manage">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="btnAccounts" fitHeight="160.0" fitWidth="160.0" layoutX="46.0" layoutY="89.0" onMouseClicked="#btnAccounts_Click" onMouseExited="#btnAccount_MouseExited" onMouseMoved="#btnAccount_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/accounts.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="btnStatistics" fitHeight="160.0" fitWidth="160.0" layoutX="746.0" layoutY="89.0" onMouseClicked="#btnStatistics_Clicked" onMouseExited="#btnStatistics_MouseExited" onMouseMoved="#btnStatistics_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/statistics.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="btnCategories" fitHeight="160.0" fitWidth="160.0" layoutX="277.0" layoutY="89.0" onMouseClicked="#btnCategories_MouseClicked" onMouseExited="#btnCategories_MouseExited" onMouseMoved="#btnCategories_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/categories.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblAccounts" layoutX="69.0" layoutY="268.0" text="Accounts" textFill="#26424b" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblCategories" layoutX="291.0" layoutY="268.0" text="Categories" textFill="#e8b750" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblStatistics" layoutX="772.0" layoutY="268.0" text="Statistics" textFill="#db605a" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblWarehouse" layoutX="527.0" layoutY="268.0" text="Warehouse" textFill="#367596" visible="false">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="btnWarehouse" fitHeight="160.0" fitWidth="160.0" layoutX="513.0" layoutY="89.0" onMouseClicked="#btnWarehouse_MouseClicked" onMouseExited="#btnWarehouse_MouseExited" onMouseMoved="#btnWarehouse_MouseMoved" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/main_icons/warehouse.png" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

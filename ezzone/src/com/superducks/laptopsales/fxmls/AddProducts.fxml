@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#Changed" prefHeight="375.0" prefWidth="759.0" styleClass="bg6" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.AddProducts">
+   <children>
+      <Label layoutX="20.0" layoutY="29.0" text="Categories" textFill="WHITE" />
+      <Label layoutX="393.0" layoutY="29.0" text="Name" textFill="#232728" />
+      <TextField fx:id="txtNameProduct" layoutX="472.0" layoutY="25.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="250.0" style="-fx-alignment: CENTER;" />
+      <Label layoutX="20.0" layoutY="106.0" text="Producer" textFill="WHITE" />
+      <Label layoutX="21.0" layoutY="179.0" text="Infomation" textFill="WHITE" />
+      <Label layoutX="393.0" layoutY="63.0" text="Price" textFill="#232728" />
+      <ImageView fx:id="btnNonAdd" fitHeight="40.0" fitWidth="40.0" layoutX="119.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_brown/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnAdd" fitHeight="40.0" fitWidth="40.0" layoutX="119.0" layoutY="302.0" onMouseClicked="#btnAdd_Click" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../icons/web_ui_color/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btnClose" fitHeight="40.0" fitWidth="40.0" layoutX="178.0" layoutY="302.0" onMouseClicked="#btnClose_Clck" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/web_ui_color/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgProduct" fitHeight="250.0" fitWidth="250.0" layoutX="472.0" layoutY="97.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/backgounds/white.jpg" />
+         </image></ImageView>
+      <TextField fx:id="txtPrice" layoutX="472.0" layoutY="57.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="250.0" style="-fx-alignment: CENTER;" />
+      <TextArea fx:id="txtInfo" layoutX="119.0" layoutY="139.0" onKeyReleased="#Changed" prefHeight="147.0" prefWidth="247.0" />
+      <TextField fx:id="txtNSX" layoutX="119.0" layoutY="102.0" onKeyReleased="#Changed" prefHeight="25.0" prefWidth="247.0" style="-fx-alignment: CENTER;" />
+      <TextField fx:id="txtCategoryName" editable="false" layoutX="119.0" layoutY="59.0" prefHeight="25.0" prefWidth="247.0" style="-fx-alignment: CENTER;" />
+      <ComboBox fx:id="cbocategory" layoutX="119.0" layoutY="25.0" onAction="#click" prefHeight="25.0" prefWidth="247.0" />
+      <Button fx:id="btnImage" layoutX="393.0" layoutY="110.0" mnemonicParsing="false" onAction="#addImage" style="-fx-background-color: white;" text="Image" />
+   </children>
+</AnchorPane>

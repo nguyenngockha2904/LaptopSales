@@ -1,0 +1,150 @@
+.button-style {
+    -fx-border-radius: 5px;
+    -fx-background-color: #58CAA5;
+    -fx-text-fill: white;
+}
+
+.label-style {
+    -fx-font-weight: bold;
+}
+
+.body-style {
+    -fx-background-image: url("../images/backgounds/clean-background.jpg");
+    -fx-background-size: cover;
+}
+
+.bg1 {
+    -fx-background-image: url("../images/backgounds/1.jpg");
+    -fx-background-size: cover;
+}
+.bg2 {
+    -fx-background-image: url("../images/backgounds/2.jpg");
+    -fx-background-size: cover;
+}
+.bg3 {
+    -fx-background-image: url("../images/backgounds/3.jpg");
+    -fx-background-size: cover;
+}
+.bg4 {
+    -fx-background-image: url("../images/backgounds/4.jpg");
+    -fx-background-size: cover;
+}
+.bg5 {
+    -fx-background-image: url("../images/backgounds/5.jpg");
+    -fx-background-size: cover;
+}
+.bg6 {
+    -fx-background-image: url("../images/backgounds/6.jpg");
+    -fx-background-size: cover;
+}
+.bg7 {
+    -fx-background-image: url("../images/backgounds/7.jpg");
+    -fx-background-size: cover;
+}
+
+.default-color0.chart-pie { -fx-pie-color: #f8ff50; }
+.default-color1.chart-pie { -fx-pie-color: #ffb14b; }
+.default-color2.chart-pie { -fx-pie-color: #ff585b; }
+.default-color3.chart-pie { -fx-pie-color: #ff71e7; }
+.default-color4.chart-pie { -fx-pie-color: #c179ff; }
+.default-color5.chart-pie { -fx-pie-color: #7190ff; }
+.default-color6.chart-pie { -fx-pie-color: #92dfff; }
+.default-color7.chart-pie { -fx-pie-color: #8cff9f; }
+.default-color8.chart-pie { -fx-pie-color: #86ff74; }
+
+.chart-pie-label-line {
+    -fx-fill: #2E112D;
+}
+.chart-pie-label {
+    -fx-fill: #2E112D;
+    -fx-font-size: 1em;
+}
+.chart-legend {
+    -fx-background-color: #fff;
+    -fx-stroke: #fff;
+}
+
+.table-style {
+    -fx-alignment: center-right;
+}
+
+.fn-14{
+    -fx-font-size: 14px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-16{
+    -fx-font-size: 16px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-18{
+    -fx-font-size: 18px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-24{
+    -fx-font-size: 24px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-32{
+    -fx-font-size: 32px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-48{
+    -fx-font-size: 48px;
+    -fx-font-family: "Times New Roman";
+}
+.fn-64{
+    -fx-font-size: 64px;
+    -fx-font-family: "Times New Roman";
+}
+/*
+text- alignments
+ */
+
+.txt-Center{
+    -fx-text-alignment: center;
+}
+.txt-inherit{
+    -fx-text-alignment: inherit;
+}
+.txt-justify{
+    -fx-text-alignment: justify;
+}
+.txt-left{
+    -fx-text-alignment: left;
+}
+.txt-right{
+    -fx-text-alignment: right;
+}
+.bg-transparent{
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #000;
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 3px;
+}

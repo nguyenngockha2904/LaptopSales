@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="131.0" prefWidth="453.0" styleClass="bg6" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.EditCategories">
+    <children>
+        <Label layoutX="23.0" layoutY="33.0" text="Category ID " textFill="WHITE">
+            <font>
+                <Font name="Times New Roman" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="23.0" layoutY="79.0" text="Category Name" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman" size="16.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtcategoryID" editable="false" layoutX="152.0" layoutY="29.0" onKeyReleased="#text_Changed" prefHeight="25.0" prefWidth="226.0" style="-fx-alignment: CENTER;" />
+        <TextField fx:id="txtcategoryName" layoutX="152.0" layoutY="76.0" onKeyReleased="#text_Changed" prefHeight="25.0" prefWidth="226.0" style="-fx-alignment: CENTER;" />
+        <ImageView fx:id="btnAdd" fitHeight="36.0" fitWidth="37.0" layoutX="392.0" layoutY="24.0" onMouseClicked="#btnAddClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/web_ui_color/plus.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnAccept" fitHeight="36.0" fitWidth="37.0" layoutX="392.0" layoutY="24.0" onMouseClicked="#btnAcceptClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/web_ui_color/checkmark.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnOut" fitHeight="36.0" fitWidth="37.0" layoutX="392.0" layoutY="70.0" onMouseClicked="#btnOutClicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/web_ui_color/delete.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnNonAdd" fitHeight="36.0" fitWidth="37.0" layoutX="392.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/web_ui_brown/plus.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="btnNonAccept" fitHeight="36.0" fitWidth="37.0" layoutX="392.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@../icons/web_ui_brown/checkmark.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

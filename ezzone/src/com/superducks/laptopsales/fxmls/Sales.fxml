@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="654.0" prefWidth="1167.0" styleClass="bg2" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.Sales">
+   <children>
+      <TableView fx:id="mainTable" layoutX="416.0" layoutY="39.0" onMouseClicked="#mainTable_MouseClicked" prefHeight="541.0" prefWidth="731.0" styleClass="table-style" stylesheets="@../css/styles.css">
+        <columns>
+          <TableColumn fx:id="clmType" prefWidth="114.0" style="-fx-alignment: CENTER;" text="Type" />
+          <TableColumn fx:id="clmProducts" prefWidth="417.0" style="-fx-alignment: CENTER;" text="Products" />
+            <TableColumn fx:id="clmAmount" prefWidth="76.0" style="-fx-alignment: CENTER;" text="Amount" />
+            <TableColumn fx:id="clmPrice" prefWidth="123.0" style="-fx-alignment: CENTER;" text="Price" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="572.0" prefWidth="382.0">
+         <children>
+            <Label layoutX="27.0" layoutY="371.0" text="Categories" textFill="WHITE" />
+            <ComboBox fx:id="cbxCategories" layoutX="109.0" layoutY="371.0" onAction="#cbxCategoriesValue_Changed" prefHeight="25.0" prefWidth="258.0" />
+            <Label layoutX="27.0" layoutY="426.0" text="Products" textFill="WHITE" />
+            <ComboBox fx:id="cbxProducts" layoutX="109.0" layoutY="426.0" onAction="#cbxValue_Changed" prefHeight="25.0" prefWidth="258.0" style="=: CENTER;" />
+            <Label layoutX="29.0" layoutY="484.0" text="Amount" textFill="WHITE" />
+            <TextField fx:id="txtAmount" layoutX="109.0" layoutY="484.0" onKeyReleased="#txtAmount_textChanged" prefHeight="25.0" prefWidth="146.0" style="-fx-alignment: CENTER;" text="1" />
+            <ImageView fx:id="btnAdd" fitHeight="40.0" fitWidth="40.0" layoutX="327.0" layoutY="468.0" onMouseClicked="#btnAdd_Click" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../icons/web_ui_color/checkmark.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnNonAdd" fitHeight="40.0" fitWidth="40.0" layoutX="327.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/web_ui_brown/checkmark.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnRemove" fitHeight="40.0" fitWidth="40.0" layoutX="273.0" layoutY="468.0" onMouseClicked="#btnRemove_Click" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../icons/web_ui_color/delete.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnNonRemove" fitHeight="40.0" fitWidth="40.0" layoutX="273.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/web_ui_brown/close.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="25.0" layoutY="263.0" text="Customer" textFill="WHITE" />
+            <TextField fx:id="txtCustomer" layoutX="109.0" layoutY="263.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="258.0" style="-fx-alignment: CENTER;" />
+            <Label layoutX="26.0" layoutY="318.0" text="Phone" textFill="WHITE" />
+            <TextField fx:id="txtPhone" layoutX="110.0" layoutY="314.0" onKeyReleased="#textChanged" prefHeight="25.0" prefWidth="258.0" style="-fx-alignment: CENTER;" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="29.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/main_icons/laptop-icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="189.0" layoutY="58.0" text="EzZone" textFill="WHITE">
+               <font>
+                  <Font size="57.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnConfirm" disable="true" layoutX="256.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#btnConfirm_Clicked" prefHeight="25.0" prefWidth="109.0" text="Confirm" />
+            <Button fx:id="btnClearAll" layoutX="109.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#btnClear_Clicked" prefHeight="25.0" prefWidth="109.0" text="Clear All" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="lblTotalePrice" alignment="CENTER_RIGHT" layoutX="418.0" layoutY="601.0" prefHeight="25.0" prefWidth="724.0" text="Total Price: 0 VND" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
