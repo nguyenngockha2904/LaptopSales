@@ -21,16 +21,16 @@
     <children>
         <HBox>
             <children>
-                <TableView fx:id="tblAccounts" onMouseClicked="#tblAccounts_Clicked" prefHeight="305.0" prefWidth="291.0">
+                <TableView fx:id="tblAccounts" onMouseClicked="#tblAccounts_Clicked" prefHeight="305.0" prefWidth="294.0">
                     <columns>
-                        <TableColumn fx:id="clmUsername" prefWidth="94.0" style="-fx-alignment: CENTER;" text="Username" />
-                        <TableColumn fx:id="clmFullname" prefWidth="195.0" style="-fx-alignment: CENTER;" text="Fullname" />
+                        <TableColumn fx:id="clmUsername" prefWidth="86.0" style="-fx-alignment: CENTER;" text="Username" />
+                        <TableColumn fx:id="clmFullname" prefWidth="204.0" style="-fx-alignment: CENTER;" text="Fullname" />
                     </columns>
                     <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                     </HBox.margin>
                 </TableView>
-                <BarChart fx:id="barChartStatistics" animated="false" legendVisible="false" prefHeight="305.0" prefWidth="375.0" style="-fx-background-color: white;" title="Bar Chart">
+                <BarChart fx:id="barChartStatistics" animated="false" legendVisible="false" prefHeight="305.0" prefWidth="371.0" style="-fx-background-color: white;" title="Bar Chart">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -70,7 +70,7 @@
             <children>
             <HBox prefHeight="60.0" prefWidth="279.0">
                <children>
-                        <DatePicker fx:id="dtpFrom" editable="false" onAction="#dtpFromSearch" prefHeight="31.0" prefWidth="140.0">
+                        <DatePicker fx:id="dtpFrom" editable="false" onAction="#radioClicked" prefHeight="31.0" prefWidth="140.0">
                             <styleClass>
                                 <String fx:value="bg-transparent" />
                                 <String fx:value="fn-16" />
@@ -79,7 +79,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                         </DatePicker>
-                        <DatePicker fx:id="dtpTo" disable="true" prefHeight="31.0" prefWidth="134.0">
+                        <DatePicker fx:id="dtpTo" disable="true" onAction="#radioClicked" prefHeight="31.0" prefWidth="134.0">
                             <styleClass>
                                 <String fx:value="bg-transparent" />
                                 <String fx:value="fn-16" />
@@ -95,7 +95,7 @@
                     <children>
                         <HBox>
                             <children>
-                                <RadioButton fx:id="radDay" mnemonicParsing="false" onAction="#dtpFromSearch" styleClass="fn-16" text="Day" textFill="#f5eded">
+                                <RadioButton fx:id="radDay" mnemonicParsing="false" onAction="#radioClicked" styleClass="fn-16" text="Day" textFill="#f5eded">
                                     <HBox.margin>
                                         <Insets bottom="5.0" right="5.0" />
                                     </HBox.margin>
@@ -103,7 +103,7 @@
                               <Font size="10.0" />
                            </font>
                                 </RadioButton>
-                                <RadioButton fx:id="radMonth" mnemonicParsing="false" onAction="#dtpFromSearch" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Month" textFill="#f5eded">
+                                <RadioButton fx:id="radMonth" mnemonicParsing="false" onAction="#radioClicked" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Month" textFill="#f5eded">
                                     <HBox.margin>
                                         <Insets bottom="5.0" left="5.0" right="5.0" />
                                     </HBox.margin>
@@ -111,7 +111,7 @@
                               <Font size="8.0" />
                            </font>
                                 </RadioButton>
-                                <RadioButton fx:id="radYear" mnemonicParsing="false" onAction="#dtpFromSearch" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Year" textFill="#f5eded">
+                                <RadioButton fx:id="radYear" mnemonicParsing="false" onAction="#radioClicked" onMouseClicked="#radBetweenClicked" styleClass="fn-16" text="Year" textFill="#f5eded">
                                     <HBox.margin>
                                         <Insets bottom="5.0" left="5.0" right="5.0" />
                                     </HBox.margin>

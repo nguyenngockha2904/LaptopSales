@@ -13,7 +13,7 @@
 
 <BorderPane styleClass="bg7" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superducks.laptopsales.controllers.Products">
     <top>
-        <VBox styleClass="bg-light-grey" BorderPane.alignment="CENTER">
+        <VBox BorderPane.alignment="CENTER">
             <children>
                 <HBox prefHeight="50.0" prefWidth="1084.0">
                     <children>

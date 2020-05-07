@@ -82,7 +82,7 @@ public class EditWarehouse {
 
     private void check() {
         String regex = "^[0-9_-]{1,3}$";
-        if(txtRemaining.getText().matches(regex) && !txtRemaining.getText().equals(products_remaining)) {
+        if(txtRemaining.getText().matches(regex) && !txtRemaining.getText().equals(products_remaining) && Integer.parseInt(txtRemaining.getText())>0) {
             btnAccept.setVisible(true);
             btnNonAccept.setVisible(false);
         } else {

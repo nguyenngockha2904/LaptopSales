@@ -72,6 +72,8 @@ public class EditAccounts {
                 LocalDate date = LocalDate.parse(rst.getString("birthday"));
                 if(!rst.getString("avatar").equals(""))
                     imgAvatar.setImage(new Image(rst.getString("avatar")));
+                if(!rst.getString("avatar").equals(""))
+                    urlImage = rst.getString("avatar");
                 dtpBirthday.setValue(date);
                 char[] c = rst.getString("position").toCharArray();
                 c[0] = Character.toUpperCase(c[0]);

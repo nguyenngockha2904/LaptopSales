@@ -1,4 +1,7 @@
 package com.superducks.laptopsales.Class;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,9 +11,9 @@ public class ConnectDatabase {
     public static Connection Connect() {
         Connection conn = null;
         //database local
-        String URL = "jdbc:mysql://localhost:3306/laptop_sales_NSH?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
+        String URL = "jdbc:mysql://localhost:3306/laptop_sales?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
         String USERNAME = "root";
-        String PASSWORD = "12081989";
+        String PASSWORD = "04030211";
 
         //database online server heroku
         String URL_ONL = "jdbc:mysql://erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/r2yqjhhpfcw4qy0p?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
@@ -26,7 +29,7 @@ public class ConnectDatabase {
 
             return conn;
         } catch (Exception e) {
-            AlertMessage.showAlert("No data from the server. Check your internet!", "error");
+            AlertMessage.showAlert("No data from the server. Check your connect!", "error");
             return null;
         }
     }

@@ -26,7 +26,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../fxmls/LoginForm.fxml"));
         primaryStage.setTitle("Log In");
         primaryStage.setScene(new Scene(root));
-        Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/laptop-icon.png");
+        Image icon = new Image("/com/superducks/laptopsales/icons/main_icons/lt-cc.png");
         primaryStage.getIcons().add(icon);
         primaryStage.show();
         primaryStage.setResizable(false);
